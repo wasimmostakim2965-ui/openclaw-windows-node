@@ -805,9 +805,14 @@ outside the disabled native option so the Windows Update action stays usable.
 The support card is hidden when native capability is available.
 
 When capability is unavailable, **Open Windows Update** opens
-`ms-settings:windowsupdate`. Guidance names Insider build **26340.9212**, the
-baseline documented by the pinned MXC SDK, or a newer supported build. Reopening
-the page reruns the check; the Welcome page has no **Check again** button.
+`ms-settings:windowsupdate`. Guidance tells users to update to a Windows version
+that supports the native Gateway. It says support is coming soon to all devices
+and, until broad availability, directs users to join the Windows Insider
+Program and select the Beta or Experimental channel for Windows 11, version
+26H1. After enrolling, users return to **Settings > Windows Update**, check for
+updates, and may need to wait a few minutes for the update to appear. Reopening
+the page reruns the check; the Welcome page has no
+**Check again** button.
 Feature rollout varies; a negative native API result is not proof
 that the build alone is the cause. Probe failures or missing/invalid metadata
 offer retry/Companion repair rather than misleading update advice. Windows Server
