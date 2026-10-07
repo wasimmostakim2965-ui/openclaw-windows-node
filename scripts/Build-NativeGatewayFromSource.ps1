@@ -26,7 +26,7 @@
     packageManager. Node.js must be win32/<Architecture>.
 
 .PARAMETER OpenClawRef
-    Branch, tag, or full SHA of https://github.com/openclaw/openclaw.git. Default: main.
+    Branch, tag, or full SHA of https://github.com/wasimmostakim2965-ui/Open-Wai.git. Default: main.
 
 .PARAMETER OpenClawSourceDirectory
     Existing local openclaw checkout to build as-is. Uncommitted changes are allowed.
@@ -105,7 +105,7 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 Import-Module (Join-Path $PSScriptRoot 'NativeGatewaySourceBuild.psm1') -Force
 
-$openClawUrl = 'https://github.com/openclaw/openclaw.git'
+$openClawUrl = 'https://github.com/wasimmostakim2965-ui/Open-Wai.git'
 $packagingUrl = 'https://github.com/openclaw/openclaw-windows-packaging.git'
 $storePublisher = 'CN=4BA40A7A-B719-4C40-BF91-84AF4F1136FC'
 
@@ -385,7 +385,7 @@ if (-not $reuse) {
 
         $nodeVersion = Get-NativeOutput 'node -p process.versions.node' { node -p 'process.versions.node' }
         [ordered]@{
-            repository = 'https://github.com/openclaw/openclaw'
+            repository = 'https://github.com/wasimmostakim2965-ui/Open-Wai'
             requestedRef = $requestedRef
             resolvedCommit = $commit
             packageVersion = $version
