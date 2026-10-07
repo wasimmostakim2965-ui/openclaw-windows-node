@@ -1,0 +1,216 @@
+name: Build our-agent Windows installer
+
+# Builds the Windows Hub (WinUI tray + Inno Setup installer) from THIS fork and
+# bundles OUR agent -- the OpenClaw CLI/Gateway packed from
+# `wasimmostakim2965-ui/Open-Wai` -- inside it.
+#
+# `scripts/Build-NativeGatewayFromSource.ps1` already points at our repo after
+# the `build: build the gateway from our Open-Wai repo` commit. That script
+# registers an MSIX under the Store publisher identity, which needs Developer
+# Mode; this workflow instead reuses the packaging repo's `Build-Payload.ps1`,
+# the exact recipe the official gateway-msix pipeline uses, which runs unsigned
+# on a normal Windows runner.
+#
+# Outputs:
+#   OpenClawCompanion-Setup-x64.exe   -- the Hub installer (unsigned)
+#   openclaw-gateway-payload-x64/     -- OUR agent (CLI + Gateway) tree
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+  AGENT_REPO: wasimmostakim2965-ui/Open-Wai
+
+jobs:
+  build-agent-package:
+    name: Build our agent package
+    runs-on: ubuntu-latest
+    outputs:
+      source_sha: ${{ steps.package.outputs.source_sha }}
+      package_version: ${{ steps.package.outputs.package_version }}
+      node_version: ${{ steps.package.outputs.node_version }}
+      package_sha256: ${{ steps.package.outputs.package_sha256 }}
+    steps:
+      - name: Check out our agent
+        uses: actions/checkout@v7
+        with:
+          repository: ${{ env.AGENT_REPO }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: |
+          corepack enable
+          pnpm install --frozen-lockfile
+
+      - name: Build our agent
+        env:
+          OPENCLAW_CONTROL_UI_RELEASE_BUILD: "1"
+        run: pnpm build
+
+      - name: Pack our agent
+        id: package
+        run: |
+          set -euo pipefail
+          artifact_dir="${RUNNER_TEMP}/openclaw-package"
+          mkdir -p "${artifact_dir}"
+          node scripts/package-openclaw-for-docker.mjs \
+            --allow-unreleased-changelog \
+            --skip-build \
+            --pnpm-pack \
+            --output-dir "${artifact_dir}" \
+            --output-name openclaw.tgz
+
+          source_sha="$(git rev-parse HEAD)"
+          package_version="$(node -p "require('./package.json').version")"
+          node_version="$(node -p 'process.versions.node')"
+          package_sha256="$(sha256sum "${artifact_dir}/openclaw.tgz" | cut -d' ' -f1)"
+
+          cat > "${artifact_dir}/source.json" <<EOF
+          {
+            "repository": "https://github.com/${AGENT_REPO}",
+            "requestedRef": "${source_sha}",
+            "resolvedCommit": "${source_sha}",
+            "packageVersion": "${package_version}",
+            "nodeVersion": "${node_version}",
+            "packageSha256": "${package_sha256}"
+          }
+          EOF
+
+          {
+            echo "source_sha=${source_sha}"
+            echo "package_version=${package_version}"
+            echo "node_version=${node_version}"
+            echo "package_sha256=${package_sha256}"
+          } >> "${GITHUB_OUTPUT}"
+
+      - name: Upload agent package
+        uses: actions/upload-artifact@v7
+        with:
+          name: openclaw-agent-package
+          path: ${{ runner.temp }}/openclaw-package/*
+          if-no-files-found: error
+          retention-days: 14
+
+  build-windows-installer:
+    name: Build Windows Hub installer with our agent
+    needs: [build-agent-package]
+    runs-on: windows-latest
+    timeout-minutes: 90
+    steps:
+      - name: Check out Windows Hub
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Download our agent package
+        uses: actions/download-artifact@v8
+        with:
+          name: openclaw-agent-package
+          path: ${{ runner.temp }}/openclaw-package
+
+      - name: Check out packaging recipe
+        uses: actions/checkout@v7
+        with:
+          repository: openclaw/openclaw-windows-packaging
+          path: packaging
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Set up Node (x64)
+        uses: actions/setup-node@v7
+        with:
+          node-version: ${{ needs.build-agent-package.outputs.node_version }}
+          architecture: x64
+
+      - name: Verify our agent package
+        shell: pwsh
+        run: |
+          & .\packaging\scripts\Test-OpenClawPackage.ps1 `
+            -PackageDirectory '${{ runner.temp }}\openclaw-package' `
+            -ExpectedCommit '${{ needs.build-agent-package.outputs.source_sha }}' `
+            -ExpectedVersion '${{ needs.build-agent-package.outputs.package_version }}' `
+            -RequestedRef '${{ needs.build-agent-package.outputs.source_sha }}'
+
+      - name: Build expanded agent payload
+        shell: pwsh
+        run: |
+          & .\packaging\scripts\Build-Payload.ps1 `
+            -PackageDirectory '${{ runner.temp }}\openclaw-package' `
+            -Architecture x64 `
+            -OutputDirectory '${{ runner.temp }}\openclaw-payload'
+
+      - name: Prove our customizations are inside the payload
+        shell: pwsh
+        run: |
+          $app = Join-Path '${{ runner.temp }}' 'openclaw-payload\app'
+          $entry = Join-Path $app 'dist\entry.js'
+          if (-not (Test-Path -LiteralPath $entry)) { throw "Missing $entry" }
+          $text = [Text.Encoding]::UTF8.GetString([IO.File]::ReadAllBytes($entry))
+          foreach ($tool in @('self_status', 'runtime_diagnostics')) {
+            if ($text -notmatch [regex]::Escape($tool)) {
+              throw "Our custom tool '$tool' is missing from the payload."
+            }
+          }
+          Write-Host 'Our agent payload contains self_status and runtime_diagnostics.'
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Cache NuGet packages
+        continue-on-error: true
+        uses: actions/cache@v6
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj', '**/Directory.Packages.props') }}
+          restore-keys: nuget-${{ runner.os }}-
+
+      - name: Publish WinUI tray app (x64)
+        run: dotnet publish src/OpenClaw.Tray.WinUI -c Release -r win-x64 --self-contained -o publish
+
+      - name: Download VC++ runtime redistributable
+        shell: pwsh
+        run: |
+          Invoke-WebRequest -Uri 'https://aka.ms/vc14/vc_redist.x64.exe' -OutFile 'vc_redist.x64.exe'
+          $signature = Get-AuthenticodeSignature -LiteralPath 'vc_redist.x64.exe'
+          if ($signature.Status -ne 'Valid') {
+            throw "vc_redist.x64.exe Authenticode signature was $($signature.Status)."
+          }
+
+      - name: Install Inno Setup
+        run: choco install innosetup -y
+
+      - name: Build installer
+        shell: pwsh
+        run: |
+          $version = '${{ needs.build-agent-package.outputs.package_version }}'
+          & 'C:\Program Files (x86)\Inno Setup 6\ISCC.exe' `
+            /DMyAppVersion=$version /DMyAppArch=x64 /Dpublish=publish /DvcRedist=vc_redist.x64.exe `
+            installer.iss
+
+      - name: Stage artifacts
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path 'artifacts' | Out-Null
+          Get-ChildItem -Path 'Output\OpenClawCompanion*-Setup-*.exe' | Copy-Item -Destination 'artifacts' -Force
+          Copy-Item -Path '${{ runner.temp }}\openclaw-payload' -Destination 'artifacts\openclaw-gateway-payload-x64' -Recurse -Force
+          Get-ChildItem -Path 'artifacts' | Format-Table Name, Length
+
+      - name: Upload installer and agent payload
+        uses: actions/upload-artifact@v7
+        with:
+          name: openclaw-windows-hub-our-agent
+          path: artifacts/**
+          if-no-files-found: error
+          retention-days: 14
