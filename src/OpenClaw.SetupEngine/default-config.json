@@ -80,7 +80,7 @@
   "Gateway": {
     // Network bind: "loopback" (127.0.0.1, secure default), "lan" (0.0.0.0, opt-in for LAN access)
     "Bind": "loopback",
-    // Override CLI install script URL (null = official https://openclaw.ai/install-cli.sh).
+    // Override CLI install script URL (null = our fork's installer in packaging/install-cli.sh).
     // The official installer defaults to npm latest. A custom URL requires an exact Version.
     "InstallUrl": null,
     // Optional upstream selector. null uses latest; tags such as extended-stable or beta
