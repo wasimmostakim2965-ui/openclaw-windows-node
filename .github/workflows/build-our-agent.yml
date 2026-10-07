@@ -153,11 +153,13 @@ jobs:
         shell: pwsh
         run: |
           $app = Join-Path '${{ runner.temp }}' 'openclaw-payload\app'
-          $entry = Join-Path $app 'dist\entry.js'
-          if (-not (Test-Path -LiteralPath $entry)) { throw "Missing $entry" }
-          $text = [Text.Encoding]::UTF8.GetString([IO.File]::ReadAllBytes($entry))
+          $dist = Join-Path $app 'dist'
+          if (-not (Test-Path -LiteralPath $dist)) { throw "Missing $dist" }
+          $blob = (Get-ChildItem -LiteralPath $dist -Recurse -File |
+            Where-Object { $_.Extension -in '.js', '.mjs', '.cjs' } |
+            ForEach-Object { [Text.Encoding]::UTF8.GetString([IO.File]::ReadAllBytes($_.FullName)) }) -join "`n"
           foreach ($tool in @('self_status', 'runtime_diagnostics')) {
-            if ($text -notmatch [regex]::Escape($tool)) {
+            if ($blob -notmatch [regex]::Escape($tool)) {
               throw "Our custom tool '$tool' is missing from the payload."
             }
           }
