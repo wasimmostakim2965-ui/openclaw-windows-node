@@ -17,7 +17,7 @@ namespace OpenClaw.SetupEngine;
 public sealed class InstallCliStep : SetupStep
 {
     internal const int DownloadMaxTimeSeconds = 60;
-    internal static readonly TimeSpan InstallerCommandTimeout = TimeSpan.FromMinutes(5);
+    internal static readonly TimeSpan InstallerCommandTimeout = TimeSpan.FromMinutes(30);
     internal const string InstallerTempDirectoryPreview =
         "/tmp/openclaw-installer-<32-hex-random>";
     internal const string StagedValidationPackageReference =

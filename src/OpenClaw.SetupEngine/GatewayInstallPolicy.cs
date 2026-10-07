@@ -144,7 +144,10 @@ public static class GatewayPackageVersion
 
 public static class GatewayInstallPolicy
 {
-    public const string DefaultInstallUrl = "https://openclaw.ai/install-cli.sh";
+    // Redirected to OUR fork: the agent is installed from Open-Wai, not upstream.
+    // This is the script the Windows Hub setup downloads and runs inside WSL.
+    public const string DefaultInstallUrl =
+        "https://raw.githubusercontent.com/wasimmostakim2965-ui/openclaw-windows-node/main/packaging/install-cli.sh";
     public const int ProtocolGeneration = 4;
     public const string NodeVersion = "24.19.0";
     public const string RecommendedTag = "latest";
