@@ -43,7 +43,9 @@ namespace OpenClawTray;
 
 public partial class App : Application, OpenClawTray.Services.IAppCommands, IPermissionsPageRuntimeHost
 {
-    internal static readonly UpdatumManager AppUpdater = new("openclaw", "openclaw-windows-node")
+    // Self-update feed redirected to OUR fork, so the tray never pulls an
+    // upstream build over our install.
+    internal static readonly UpdatumManager AppUpdater = new("wasimmostakim2965-ui", "openclaw-windows-node")
     {
         FetchOnlyLatestRelease = true,
         InstallUpdateSingleFileExecutableName = "OpenClaw.Tray.WinUI",

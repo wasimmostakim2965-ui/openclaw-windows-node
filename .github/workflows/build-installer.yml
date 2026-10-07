@@ -91,10 +91,25 @@ jobs:
           $hasUp  = ($u8.Contains($upUrl))  -or ($u16.Contains($upUrl))
           if (-not $hasOur) { throw "SetupEngine.dll does NOT reference our installer URL." }
           if ($hasUp) { throw "SetupEngine.dll still references the upstream installer URL." }
+
+          # The tray self-updater must also point at our fork, or it would pull an
+          # upstream build over our install on the next update check.
+          $trayDll = "publish-x64\OpenClaw.Tray.WinUI.dll"
+          if (-not (Test-Path $trayDll)) { throw "OpenClaw.Tray.WinUI.dll was not published." }
+          $tb = [System.IO.File]::ReadAllBytes((Resolve-Path $trayDll))
+          $tu8  = [System.Text.Encoding]::UTF8.GetString($tb)
+          $tu16 = [System.Text.Encoding]::Unicode.GetString($tb)
+          $owner = "wasimmostakim2965-ui"
+          if (-not (($tu8.Contains($owner)) -or ($tu16.Contains($owner)))) {
+            throw "Tray updater does not point at our fork."
+          }
+
           "SetupEngine.dll points at OUR installer and contains no upstream URL." |
             Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
           "  our URL  : $ourUrl" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
           "  upstream : absent"  | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
+          "Tray self-updater owner: $owner" |
+            Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append
 
       - name: Install Inno Setup
         shell: pwsh
