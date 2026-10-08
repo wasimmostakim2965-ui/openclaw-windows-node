@@ -498,7 +498,7 @@ Environment variables:
   OPENCLAW_VERSION=latest|next|<semver>
   OPENCLAW_GIT_DIR=...
   OPENCLAW_GIT_UPDATE=0|1
-  OPENCLAW_GIT_REPO_URL=...           Git checkout source (default: the official OpenClaw repository)
+  OPENCLAW_GIT_REPO_URL=...           Git checkout source (default: this fork's repository)
 EOF
 }
 
