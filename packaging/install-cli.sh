@@ -378,7 +378,7 @@ installer_clone_error() {
 }
 
 # OpenClaw CLI installer (non-interactive, no onboarding)
-# Usage: curl -fsSL --proto '=https' --tlsv1.2 https://openclaw.ai/install-cli.sh | bash -s -- [--json] [--prefix <path>] [--version <ver>] [--node-version <ver>] [--onboard]
+# Usage: curl -fsSL --proto '=https' --tlsv1.2 https://raw.githubusercontent.com/wasimmostakim2965-ui/openclaw-windows-node/main/packaging/install-cli.sh | bash -s -- [--json] [--prefix <path>] [--version <ver>] [--node-version <ver>] [--onboard]
 
 ensure_home_env() {
   if [[ -n "${HOME:-}" && "${HOME}" != "/" && -d "${HOME}" ]]; then
@@ -1668,7 +1668,7 @@ ensure_pnpm_git_prepare_allowlist() {
 
 install_openclaw_from_git() {
   local repo_dir="$1"
-  local repo_url="${GIT_REPO_URL:-https://github.com/openclaw/openclaw.git}"
+  local repo_url="${GIT_REPO_URL:-https://github.com/wasimmostakim2965-ui/Open-Wai.git}"
   local fresh_checkout=0
 
   if [[ -z "$repo_dir" ]]; then
