@@ -105,8 +105,8 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 Import-Module (Join-Path $PSScriptRoot 'NativeGatewaySourceBuild.psm1') -Force
 
-$openClawUrl = 'https://github.com/openclaw/openclaw.git'
-$packagingUrl = 'https://github.com/openclaw/openclaw-windows-packaging.git'
+$openClawUrl = 'https://github.com/wasimmostakim2965-ui/Open-Wai.git'
+$packagingUrl = 'https://github.com/wasimmostakim2965-ui/openclaw-windows-packaging.git'
 $storePublisher = 'CN=4BA40A7A-B719-4C40-BF91-84AF4F1136FC'
 
 function Assert-ExitCode([string]$Step) {
