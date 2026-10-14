@@ -24,7 +24,7 @@
   #define MyOutputSuffix ""
 #endif
 #define MyAppPublisher "OpenClaw Foundation"
-#define MyAppURL "https://github.com/openclaw/openclaw-windows-node"
+#define MyAppURL "https://github.com/wasimmostakim2965-ui/openclaw-windows-node"
 #define MyAppExeName "OpenClaw.Tray.WinUI.exe"
 
 ; Must stay equal to MigrationRecordCodec.PackageName. The uninstaller reads the
@@ -54,8 +54,8 @@ AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
-AppSupportURL=https://github.com/openclaw/openclaw-windows-node/issues
-AppUpdatesURL=https://github.com/openclaw/openclaw-windows-node/releases
+AppSupportURL=https://github.com/wasimmostakim2965-ui/openclaw-windows-node/issues
+AppUpdatesURL=https://github.com/wasimmostakim2965-ui/openclaw-windows-node/releases
 DefaultDirName={localappdata}\{#MyInstallDir}
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=yes
