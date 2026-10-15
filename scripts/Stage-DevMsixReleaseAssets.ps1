@@ -166,6 +166,6 @@ instructions. These packages are development-signed for sideloading, not
 Microsoft Store-signed.
 
 Unsigned Store submission packages remain available only as workflow artifacts
-in the corresponding [Actions run](https://github.com/openclaw/openclaw-windows-node/actions/runs/$ExpectedWorkflowRunId).
+in the corresponding [Actions run](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/actions/runs/$ExpectedWorkflowRunId).
 "@
 }

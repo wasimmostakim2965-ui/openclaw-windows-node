@@ -781,7 +781,7 @@ public sealed partial class WorkspaceWindow : WindowEx
         {
             Text = LocalizationHelper.GetString("SettingsPage_AppInfoGitHub.Content")
         };
-        github.Click += async (_, _) => await OpenLinkAsync("https://github.com/openclaw/openclaw-windows-node");
+        github.Click += async (_, _) => await OpenLinkAsync("https://github.com/wasimmostakim2965-ui/openclaw-windows-node");
         help.Items.Add(github);
         menu.Items.Add(help);
         Add("About", () => OpenCompanion(CompanionPageId.About), FluentIconCatalog.About);
