@@ -17,7 +17,10 @@ namespace OpenClaw.SetupEngine;
 public sealed class InstallCliStep : SetupStep
 {
     internal const int DownloadMaxTimeSeconds = 60;
-    internal static readonly TimeSpan InstallerCommandTimeout = TimeSpan.FromMinutes(5);
+    // Our fork installs the gateway by building its source (git clone + pnpm
+    // install + pnpm build), which takes far longer than the prebuilt npm path;
+    // the prebuilt package is not published for the fork. Keep this generous.
+    internal static readonly TimeSpan InstallerCommandTimeout = TimeSpan.FromMinutes(45);
     internal const string InstallerTempDirectoryPreview =
         "/tmp/openclaw-installer-<32-hex-random>";
     internal const string StagedValidationPackageReference =

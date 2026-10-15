@@ -2197,7 +2197,7 @@ public class SetupStepsTests : IDisposable
         var result = await new InstallCliStep().ExecuteAsync(ctx, CancellationToken.None);
 
         Assert.Equal(StepOutcome.Failed, result.Outcome);
-        Assert.Contains("timed out after 5 minutes", result.Message);
+        Assert.Contains("timed out after 45 minutes", result.Message);
         Assert.Contains("last installer diagnostic", result.Message);
         Assert.DoesNotContain("exit -1", result.Message);
         AssertCleanupRan(commands);

@@ -746,7 +746,7 @@ jobs:
     needs: [change-classification, fast-validation]
     if: ${{ !cancelled() && needs.change-classification.result == 'success' && needs.fast-validation.result == 'success' && needs.change-classification.outputs.setup_e2e == 'true' }}
     runs-on: windows-latest
-    timeout-minutes: 45
+    timeout-minutes: 150
     env:
       OPENCLAW_REPO_ROOT: ${{ github.workspace }}
     steps:
@@ -804,7 +804,7 @@ jobs:
     needs: [change-classification, fast-validation]
     if: ${{ !cancelled() && needs.change-classification.result == 'success' && needs.fast-validation.result == 'success' && needs.change-classification.outputs.revocation_e2e == 'true' }}
     runs-on: windows-latest
-    timeout-minutes: 25
+    timeout-minutes: 90
     env:
       OPENCLAW_REPO_ROOT: ${{ github.workspace }}
     steps:
@@ -862,7 +862,7 @@ jobs:
     needs: [change-classification, fast-validation]
     if: ${{ !cancelled() && needs.change-classification.result == 'success' && needs.fast-validation.result == 'success' && needs.change-classification.outputs.network_e2e == 'true' }}
     runs-on: windows-latest
-    timeout-minutes: 25
+    timeout-minutes: 90
     env:
       OPENCLAW_REPO_ROOT: ${{ github.workspace }}
     steps:
