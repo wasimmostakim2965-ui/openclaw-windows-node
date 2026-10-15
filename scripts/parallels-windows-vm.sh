@@ -14,7 +14,7 @@ APP_SNAPSHOT="pre-openclaw-windows-app-e2e-${TODAY}"
 APP_SNAPSHOT_EXPLICIT=0
 SELECTED_SNAPSHOT=""
 GUEST_CHECKOUT=""
-REPO_URL="https://github.com/wasimmostakim2965-ui/openclaw-windows-node.git"
+REPO_URL="https://github.com/openclaw/openclaw-windows-node.git"
 REPO_REF=""
 SKIP_RESTORE=0
 

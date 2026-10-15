@@ -11,7 +11,7 @@ function Invoke-PromotionApi {
     )
 
     $arguments = @{
-        Uri = "https://api.github.com/repos/wasimmostakim2965-ui/openclaw-windows-node/$Path"
+        Uri = "https://api.github.com/repos/openclaw/openclaw-windows-node/$Path"
         Method = $Method
         Headers = @{
             Accept = 'application/vnd.github+json'
@@ -357,7 +357,7 @@ $($notes.body)
 OpenClaw-Dev-x64.zip and OpenClaw-Dev-arm64.zip contain development-signed
 packages, matching public certificates, provenance, and installation instructions.
 These are not Microsoft Store-signed packages. Unsigned Store submission packages
-remain [workflow artifacts](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/actions/runs/$RunId).
+remain [workflow artifacts](https://github.com/openclaw/openclaw-windows-node/actions/runs/$RunId).
 
 $marker
 "@
@@ -373,7 +373,7 @@ $marker
     foreach ($file in $files) {
         $assets = @($release.assets | Where-Object name -CEQ $file.name)
         if ($assets.Count -eq 0) {
-            & gh release upload $tag (Join-Path $Directory $file.name) --repo wasimmostakim2965-ui/openclaw-windows-node
+            & gh release upload $tag (Join-Path $Directory $file.name) --repo openclaw/openclaw-windows-node
             if ($LASTEXITCODE -ne 0) { throw "Could not upload $($file.name). Resume with the same prepared artifact." }
         } elseif ($assets.Count -ne 1 -or $assets[0].digest -cne "sha256:$($file.sha256)") {
             throw 'A draft asset has different bytes. Refusing to overwrite it.'

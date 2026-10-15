@@ -86,7 +86,7 @@ function New-Fixture {
         sourceVersion = $Version
         sourceCommit = $sourceCommit
         sourceRef = "refs/tags/v$Version"
-        repository = 'wasimmostakim2965-ui/openclaw-windows-node'
+        repository = 'openclaw/openclaw-windows-node'
         baseVersion = '2026.7.2'
         packageBaseVersion = '2026.7.202'
         storePackageVersion = '2026.7.202.0'
@@ -108,7 +108,7 @@ function New-Fixture {
             $certificate.Export([Security.Cryptography.X509Certificates.X509ContentType]::Cert))
         Set-Content -LiteralPath (Join-Path $directory 'INSTALL.txt') -Value "Install $packageName"
         [ordered]@{
-            repository = 'https://github.com/wasimmostakim2965-ui/openclaw-windows-node'
+            repository = 'https://github.com/openclaw/openclaw-windows-node'
             sourceCommit = $sourceCommit
             sourceTreeDirty = $false
             architecture = $architecture

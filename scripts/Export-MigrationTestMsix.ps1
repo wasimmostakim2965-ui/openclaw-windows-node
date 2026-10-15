@@ -168,7 +168,7 @@ try {
     $certificateHash = (Get-FileHash -LiteralPath $certificatePath -Algorithm SHA256).Hash.ToLowerInvariant()
 
     [ordered]@{
-        repository = 'https://github.com/wasimmostakim2965-ui/openclaw-windows-node'
+        repository = 'https://github.com/openclaw/openclaw-windows-node'
         sourceCommit = $sourceCommit.ToLowerInvariant()
         sourceTreeDirty = $sourceTreeDirty
         architecture = $Architecture
