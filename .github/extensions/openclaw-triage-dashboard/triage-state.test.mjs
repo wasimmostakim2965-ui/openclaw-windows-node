@@ -330,12 +330,12 @@ test("binds inputs and item links to the OpenClaw repository", () => {
         ...base,
         repo: "attacker/other-repo",
         items: [inputItem()],
-    }), /repo must be openclaw\/openclaw-windows-node/);
+    }), /repo must be wasimmostakim2965-ui\/openclaw-windows-node/);
     assert.throws(() => normalizeTriageInput({
         ...base,
         repo: "wasimmostakim2965-ui/openclaw-windows-node",
         items: [inputItem({ url: "https://example.com/pull/1308" })],
-    }), /canonical openclaw\/openclaw-windows-node GitHub URL/);
+    }), /canonical wasimmostakim2965-ui\/openclaw-windows-node GitHub URL/);
 });
 
 test("rejects duplicate item numbers across item types", () => {
@@ -737,7 +737,7 @@ test("issue actions use a distinct stable child session name", () => {
     );
 
     assert.equal(routing.sessionName, "Triage Issue #42");
-    assert.match(routing.prompt, /openclaw\/openclaw-windows-node Issue #42/);
+    assert.match(routing.prompt, /wasimmostakim2965-ui\/openclaw-windows-node Issue #42/);
 });
 
 test("merge routing stops before sending when fresh GitHub evidence is unavailable", async () => {

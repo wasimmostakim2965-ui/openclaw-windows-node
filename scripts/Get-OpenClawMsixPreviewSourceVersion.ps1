@@ -55,7 +55,7 @@ if ([string]::IsNullOrWhiteSpace($tag)) {
             try {
                 $release = Invoke-RestMethod `
                     -Headers $headers `
-                    -Uri 'https://api.github.com/repos/wasimmostakim2965-ui/openclaw-windows-node/releases/latest' `
+                    -Uri 'https://api.github.com/repos/openclaw/openclaw-windows-node/releases/latest' `
                     -MaximumRedirection 0 `
                     -ErrorAction Stop
                 break

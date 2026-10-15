@@ -122,7 +122,7 @@ function Assert-WindowsReleaseTagUnpublished {
     try {
         Invoke-RestMethod `
             -Headers $RequestHeaders `
-            -Uri "https://api.github.com/repos/wasimmostakim2965-ui/openclaw-windows-node/releases/tags/$ReleaseTag" |
+            -Uri "https://api.github.com/repos/openclaw/openclaw-windows-node/releases/tags/$ReleaseTag" |
             Out-Null
     } catch {
         $status = Get-ExceptionHttpStatus -Exception $_.Exception
@@ -141,7 +141,7 @@ function Get-CurrentWindowsReleaseTag {
 
     $release = Invoke-RestMethod `
         -Headers $RequestHeaders `
-        -Uri "https://api.github.com/repos/wasimmostakim2965-ui/openclaw-windows-node/releases/latest"
+        -Uri "https://api.github.com/repos/openclaw/openclaw-windows-node/releases/latest"
 
     $tagName = $null
     if ($null -ne $release -and
@@ -149,7 +149,7 @@ function Get-CurrentWindowsReleaseTag {
         $tagName = $release.tag_name
     }
     if ([string]::IsNullOrWhiteSpace($tagName)) {
-        throw "Could not resolve the current wasimmostakim2965-ui/openclaw-windows-node latest release tag."
+        throw "Could not resolve the current openclaw/openclaw-windows-node latest release tag."
     }
 
     if ($release.PSObject.Properties["draft"] -and $release.draft) {

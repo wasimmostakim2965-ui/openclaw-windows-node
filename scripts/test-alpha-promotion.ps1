@@ -212,7 +212,7 @@ function New-ArtifactFixture([object]$Record) {
     }
     $allocation = [pscustomobject][ordered]@{
         schemaVersion = 1; sourceVersion = '2026.9.5'; sourceCommit = $sourceSha
-        sourceRef = 'refs/tags/v2026.9.5'; repository = 'wasimmostakim2965-ui/openclaw-windows-node'
+        sourceRef = 'refs/tags/v2026.9.5'; repository = 'openclaw/openclaw-windows-node'
         baseVersion = '2026.9.5'; packageBaseVersion = '2026.9.510'; storePackageVersion = '2026.9.510.0'
         packagingRevision = 10; allocation = 'reserved'; reservationRef = 'refs/tags/msix-package/2026.9.5/510'
     }
