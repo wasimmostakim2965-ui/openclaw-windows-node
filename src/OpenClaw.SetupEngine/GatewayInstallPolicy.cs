@@ -144,7 +144,17 @@ public static class GatewayPackageVersion
 
 public static class GatewayInstallPolicy
 {
-    public const string DefaultInstallUrl = "https://raw.githubusercontent.com/wasimmostakim2965-ui/Open-Wai/main/scripts/install-cli.sh";
+    // The Hub fetches this as a single standalone file piped to `bash -s`; the raw
+    // scripts/ copy cannot be used because a piped script has no BASH_SOURCE to
+    // source install-policy.sh from. installers/ is the assembled (policy-inlined)
+    // copy produced by scripts/build-installers.mjs.
+    public const string DefaultInstallUrl = "https://raw.githubusercontent.com/wasimmostakim2965-ui/Open-Wai/main/installers/install-cli.sh";
+
+    // The canonical first-party installer is also treated as "official" so the
+    // hardened transfer flags and version policy stay pinned to it by contract
+    // tests, even though our fork default points at the standalone mirror above.
+    private const string CanonicalInstallerUrl = "https://openclaw.ai/install-cli.sh";
+
     public const int ProtocolGeneration = 4;
     public const string NodeVersion = "24.19.0";
     public const string RecommendedTag = "latest";
@@ -156,7 +166,8 @@ public static class GatewayInstallPolicy
 
     public static bool IsOfficialInstallerUrl(string? installUrl) =>
         string.IsNullOrWhiteSpace(installUrl) ||
-        string.Equals(installUrl, DefaultInstallUrl, StringComparison.OrdinalIgnoreCase);
+        string.Equals(installUrl, DefaultInstallUrl, StringComparison.OrdinalIgnoreCase) ||
+        string.Equals(installUrl, CanonicalInstallerUrl, StringComparison.OrdinalIgnoreCase);
 
     public static void ValidateAndApply(SetupConfig config)
     {
