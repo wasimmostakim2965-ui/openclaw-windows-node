@@ -1,0 +1,83 @@
+name: Build Windows Installer (unsigned)
+
+# Builds the OpenClaw Companion installer EXE from OUR fork only.
+# No signing step: the produced EXE is unsigned. Install it with the normal
+# "More info -> Run anyway" Windows SmartScreen flow, or sideload it in
+# Developer Mode. This mirrors the official release build (dotnet publish +
+# Inno Setup) minus Azure Trusted Signing.
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Installer version to stamp (e.g. 2026.10.3)"
+        required: true
+        default: "2026.10.3"
+  push:
+    branches: [main]
+    paths:
+      - "installer.iss"
+      - ".github/workflows/build-windows-installer.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build-x64-installer:
+    name: Build x64 installer (unsigned)
+    runs-on: windows-latest
+    env:
+      OPENCLAW_BUILD_VERSION: ${{ inputs.version || '2026.10.3' }}
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Publish WinUI Tray App (x64, self-contained)
+        run: dotnet publish src/OpenClaw.Tray.WinUI -c Release -r win-x64 --self-contained -o publish-x64 -p:Version=$env:OPENCLAW_BUILD_VERSION -p:InformationalVersion=$env:OPENCLAW_BUILD_VERSION
+
+      - name: Download Visual C++ Runtime Redistributable
+        shell: pwsh
+        run: |
+          Invoke-WebRequest -Uri "https://aka.ms/vc14/vc_redist.x64.exe" -OutFile vc_redist.x64.exe
+          $signature = Get-AuthenticodeSignature -LiteralPath vc_redist.x64.exe
+          if ($signature.Status -ne "Valid") {
+            throw "vc_redist.x64.exe Authenticode signature was $($signature.Status)."
+          }
+          $subject = if ($signature.SignerCertificate) { $signature.SignerCertificate.Subject } else { "" }
+          if ($subject -notmatch "O=Microsoft Corporation") {
+            throw "vc_redist.x64.exe signer was not Microsoft Corporation: $subject"
+          }
+
+      - name: Install Inno Setup
+        run: choco install innosetup -y --no-progress
+
+      - name: Compile installer (unsigned)
+        shell: pwsh
+        run: |
+          # installer.iss bundles publish-x64\* and the Microsoft VC++ redistributable.
+          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" `
+            /DMyAppVersion=$env:OPENCLAW_BUILD_VERSION `
+            /DMyAppArch=x64 `
+            "/Dpublish=$env:GITHUB_WORKSPACE\publish-x64" `
+            "/DvcRedist=$env:GITHUB_WORKSPACE\vc_redist.x64.exe" `
+            "/O$env:GITHUB_WORKSPACE\Output" `
+            installer.iss
+          if ($LASTEXITCODE -ne 0) { throw 'installer compilation failed.' }
+
+      - name: List Output
+        shell: pwsh
+        run: Get-ChildItem Output | Format-Table Name, Length
+
+      - name: Upload installer artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: openclaw-companion-installer-unsigned-x64
+          path: Output/*.exe
+          if-no-files-found: error

@@ -15,7 +15,7 @@
   // Skip Windows permission elevation checks
   "SkipPermissions": false,
   // Run the gateway wizard. Missing required answers produce a template next to the setup log.
-  "SkipWizard": false,
+  "SkipWizard": true,
   // Answers for the gateway wizard when SkipWizard is false. Keys use stable
   // normalized step titles/messages; select values must match gateway option values.
   // Companion-managed choices use policy defaults. Conflicting explicit answers fail setup.
@@ -95,7 +95,11 @@
     // Auth mode: "token" (shared secret)
     "AuthMode": "token",
     // Additional gateway config key/value pairs (applied via `openclaw config set`)
-    "ExtraConfig": null
+    // tools.profile=full grants the agent every tool, so it can read and change
+    // its own backend code and UI, not only create new tools.
+    "ExtraConfig": {
+      "tools.profile": "full"
+    }
   },
 
   // Native Windows llama-server and immutable Hugging Face model acquisition.
