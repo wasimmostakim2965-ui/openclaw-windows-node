@@ -5,14 +5,14 @@ description: "Run complete OpenClaw Windows Node issue and PR triage, including 
 
 # OpenClaw Windows Node Global Triage
 
-Run a complete maintainer triage of `openclaw/openclaw-windows-node`. Read every
+Run a complete maintainer triage of `wasimmostakim2965-ui/openclaw-windows-node`. Read every
 open issue and pull request, identify safe landing lanes, schedule OpenClaw's
 Windows proof pools, and produce the same evidence-backed Markdown report used
 for the August 27 and September 1 maintainer sweeps. Open the interactive
 OpenClaw triage canvas when the user requests it as an additional handoff.
 
 This skill is repository-specific. If the current repository is not
-`openclaw/openclaw-windows-node`, stop and say that this skill applies only to
+`wasimmostakim2965-ui/openclaw-windows-node`, stop and say that this skill applies only to
 the OpenClaw Windows Node repository.
 
 ## Trigger
@@ -108,7 +108,7 @@ Prefer the latest successful scheduled `Repository Triage Report` artifact as
 the inventory baseline:
 
 ```powershell
-$repo = "openclaw/openclaw-windows-node"
+$repo = "wasimmostakim2965-ui/openclaw-windows-node"
 gh run list --repo $repo --workflow repository-triage.yml --limit 10
 gh run download <run-id> --repo $repo --name repository-triage-report `
   --dir <session-artifact-dir>\triage-YYYY-MM-DD\scheduled

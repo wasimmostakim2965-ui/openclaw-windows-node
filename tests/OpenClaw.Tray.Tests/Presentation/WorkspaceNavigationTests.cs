@@ -429,7 +429,7 @@ public sealed class WorkspaceNavigationTests
         Assert.Contains("OpenCompanion(CompanionPageId.Channels)", code);
         Assert.Contains("OpenCompanion(CompanionPageId.About)", code);
         Assert.Contains("Add(\"GetApps\", () => _ = OpenLinkAsync(\"https://docs.openclaw.ai/platforms\")", code);
-        Assert.Contains("OpenLinkAsync(\"https://github.com/openclaw/openclaw-windows-node\")", code);
+        Assert.Contains("OpenLinkAsync(\"https://github.com/wasimmostakim2965-ui/openclaw-windows-node\")", code);
         Assert.Contains("help.Items.Add(github)", code);
         Assert.DoesNotContain("WebView", File.ReadAllText(Source("Windows", "WorkspaceWindow.xaml")));
     }

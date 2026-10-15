@@ -45,7 +45,7 @@
     "  responseEnvelopeSource - declaration-signature fragment of the parser body that",
     "                    reads this method's response envelope."
   ],
-  "upstreamSourceOfTruth": "openclaw/openclaw — packages/gateway-protocol/src/schema/{sessions,commands}.ts",
+  "upstreamSourceOfTruth": "wasimmostakim2965-ui/Open-Wai — packages/gateway-protocol/src/schema/{sessions,commands}.ts",
   "upstreamRef": "main",
   "upstreamVerified": {
     "date": "2026-06-23",

@@ -59,7 +59,7 @@ Verify that message 240 is actually visible, not just that the current scroll
 extent was reached. Verify streaming tail-follow and arrivals while scrolled
 up. Do not substitute extent-only scrolling: the alternative workaround
 stopped near message 233 in the reported scenario.
-[Tracking issue #1424](https://github.com/openclaw/openclaw-windows-node/issues/1424)
+[Tracking issue #1424](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/issues/1424)
 owns the package upgrade and removal gates.
 
 ### New command MCP contract

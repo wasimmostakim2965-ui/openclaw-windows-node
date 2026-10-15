@@ -223,7 +223,7 @@ the packaged Gateway lifecycle.
 
 Actual package E2E needs a disposable Windows account/host with a successful
 MXC session capability probe and a verified installable MSIX from
-[`openclaw-windows-packaging`](https://github.com/openclaw/openclaw-windows-packaging).
+[`openclaw-windows-packaging`](https://github.com/wasimmostakim2965-ui/openclaw-windows-packaging).
 Record the packaging commit, release policy, payload commit/version, architecture,
 package name/family/publisher/version, and verified artifact digest. An older
 development registration or unsigned Store-submission archive is not proof of
@@ -243,7 +243,7 @@ Investigation snapshot (2026-09-24): packaging commit
 `3f2e3268ca0961a08a12e31a25b0c2c174548955` selects upstream `2026.9.4` and MSIX
 revision 4 (`2026.9.404.0`) with the Store identity
 `OpenClawFoundation.OpenClawGateway`. Its
-[producer run](https://github.com/openclaw/openclaw-windows-packaging/actions/runs/36033664419)
+[producer run](https://github.com/wasimmostakim2965-ui/openclaw-windows-packaging/actions/runs/36033664419)
 failed verified-release-tag admission and produced no artifacts; the corresponding
 release was unavailable. The published revision-3 package uses the old identity,
 so it cannot stand in for revision-4 Store proof. The hosted Windows image in that

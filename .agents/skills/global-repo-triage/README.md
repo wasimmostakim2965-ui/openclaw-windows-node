@@ -1,7 +1,7 @@
 # OpenClaw Windows Node Global Triage
 
 This portable skill reproduces the full maintainer sweep used for
-`openclaw/openclaw-windows-node`. It combines the repository's scheduled
+`wasimmostakim2965-ui/openclaw-windows-node`. It combines the repository's scheduled
 read-only triage report with source review, proof-pool scheduling, active-owner
 auditing, adversarial review, landing order, and release planning. It can also
 open a live interactive canvas when requested.

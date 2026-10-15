@@ -381,7 +381,7 @@ function Resolve-MsixPackageVersion {
     $verificationRef = $SourceRef
     if ($PSBoundParameters.ContainsKey('PromotionAlphaTag')) {
         $expectedAlpha = '\Av' + [regex]::Escape($app.baseVersion) + '-alpha\.(?:0|[1-9]\d*)\z'
-        if (-not $Reserve -or $Repository -cne 'openclaw/openclaw-windows-node' -or
+        if (-not $Reserve -or $Repository -cne 'wasimmostakim2965-ui/openclaw-windows-node' -or
             $SourceVersion -cne $app.baseVersion -or $PromotionAlphaTag -cnotmatch $expectedAlpha) {
             throw 'PromotionAlphaTag requires a canonical same-base alpha for a reserved stable release in the canonical repository.'
         }

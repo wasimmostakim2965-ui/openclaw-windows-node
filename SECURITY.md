@@ -6,7 +6,7 @@ Do not open a public issue or pull request that discloses an unpatched vulnerabi
 
 ## Reporting
 
-For vulnerabilities in this repository, submit a private GitHub Security Advisory for [openclaw/openclaw-windows-node](https://github.com/openclaw/openclaw-windows-node/security/advisories/new) when available.
+For vulnerabilities in this repository, submit a private GitHub Security Advisory for [wasimmostakim2965-ui/openclaw-windows-node](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/security/advisories/new) when available.
 
 If the issue does not fit this repository or you are unsure where it belongs, email [security@openclaw.ai](mailto:security@openclaw.ai) and we will route it.
 
@@ -35,14 +35,14 @@ Security-relevant surfaces in this repository include:
 
 The following are usually out of scope for this repository:
 
-- issues in OpenClaw core, bundled plugins, channels, or gateway behavior that must be fixed in [openclaw/openclaw](https://github.com/openclaw/openclaw),
+- issues in OpenClaw core, bundled plugins, channels, or gateway behavior that must be fixed in [wasimmostakim2965-ui/Open-Wai](https://github.com/wasimmostakim2965-ui/Open-Wai),
 - vulnerabilities in upstream Windows, .NET, WinUI, PowerToys, or third-party packages without reachable impact through OpenClaw Windows,
 - prompt injection by itself, unless it demonstrates a concrete auth, approval, sandbox, command-policy, or local-boundary bypass,
 - reports that require prior write access to trusted local state such as `%APPDATA%\OpenClawTray`, `%LOCALAPPDATA%\OpenClawTray`, project files, shell profile files, or installed binaries,
 - insecure local machine administration or multi-user host setups where the OS trust boundary is already lost,
 - scanner-only findings without a working reproduction and demonstrated OpenClaw Windows impact.
 
-If the issue is actually in OpenClaw core, report it to [openclaw/openclaw](https://github.com/openclaw/openclaw/security/advisories/new). For broader OpenClaw reporting guidance, see [https://trust.openclaw.ai](https://trust.openclaw.ai).
+If the issue is actually in OpenClaw core, report it to [wasimmostakim2965-ui/Open-Wai](https://github.com/wasimmostakim2965-ui/Open-Wai/security/advisories/new). For broader OpenClaw reporting guidance, see [https://trust.openclaw.ai](https://trust.openclaw.ai).
 
 ## Trust Boundaries
 

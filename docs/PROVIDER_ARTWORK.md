@@ -7,7 +7,7 @@ image and `ProviderArtworkSession` owns the AI page's download/cache lifetime.
 
 ## Pinned platform comparison
 
-The reference is `openclaw/openclaw` commit
+The reference is `wasimmostakim2965-ui/Open-Wai` commit
 `0fd603a6fece58d60c010e565df9e26c6601db8b`, specifically
 `apps/macos/Sources/OpenClaw/OnboardingProviderArtwork.swift` and
 `OnboardingAISetupView.swift`.

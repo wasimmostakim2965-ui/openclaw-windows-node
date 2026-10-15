@@ -102,7 +102,7 @@ Export-Certificate -Cert $certificate -FilePath $certificatePath -Type CERT | Ou
 $packageHash = (Get-FileHash -LiteralPath (Join-Path $OutputDirectory $packageName) -Algorithm SHA256).Hash.ToLowerInvariant()
 $certificateHash = (Get-FileHash -LiteralPath $certificatePath -Algorithm SHA256).Hash.ToLowerInvariant()
 [ordered]@{
-    repository = 'https://github.com/openclaw/openclaw-windows-node'
+    repository = 'https://github.com/wasimmostakim2965-ui/openclaw-windows-node'
     sourceCommit = $sourceCommit.ToLowerInvariant()
     sourceTreeDirty = $sourceTreeDirty
     architecture = $Architecture

@@ -30,7 +30,7 @@ wsl.exe -d OpenClawGateway --user root -- bash -lc "whoami && id"
 Most gateway configuration lives in:
 
 ```text
-/home/openclaw/.openclaw/openclaw.json
+/home/openclaw/.wasimmostakim2965-ui/Open-Wai.json
 ```
 
 Because the distro is locked down, edit this file from inside WSL as the `openclaw` user instead of editing it through the Windows filesystem share. The edit commands in this section intentionally change files; the inspection commands in the rest of this guide are read-only.
@@ -66,13 +66,13 @@ Read-only checks for the config:
 
 ```powershell
 # Shows ownership, permissions, size, and timestamp for openclaw.json.
-wsl.exe -d OpenClawGateway --user openclaw -- bash -lc "ls -l /home/openclaw/.openclaw/openclaw.json"
+wsl.exe -d OpenClawGateway --user openclaw -- bash -lc "ls -l /home/openclaw/.wasimmostakim2965-ui/Open-Wai.json"
 
 # Verifies that openclaw.json is valid JSON without printing it.
-wsl.exe -d OpenClawGateway --user openclaw -- bash -lc "python3 -m json.tool /home/openclaw/.openclaw/openclaw.json > /dev/null"
+wsl.exe -d OpenClawGateway --user openclaw -- bash -lc "python3 -m json.tool /home/openclaw/.wasimmostakim2965-ui/Open-Wai.json > /dev/null"
 
 # Prints only the top-level config keys, not secret values.
-wsl.exe -d OpenClawGateway --user openclaw -- python3 -c "import json; data=json.load(open('/home/openclaw/.openclaw/openclaw.json')); print('\n'.join(sorted(data.keys())))"
+wsl.exe -d OpenClawGateway --user openclaw -- python3 -c "import json; data=json.load(open('/home/openclaw/.wasimmostakim2965-ui/Open-Wai.json')); print('\n'.join(sorted(data.keys())))"
 ```
 
 Do not paste or share the full `openclaw.json` file. It can contain gateway tokens, private endpoints, provider settings, or other secrets; redact those values before sharing diagnostics.

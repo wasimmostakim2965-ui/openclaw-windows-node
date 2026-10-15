@@ -17,7 +17,7 @@ export const KNOWN_PROOF_POOLS = new Set([
     "windows-winui-interactive",
 ]);
 
-export const SUPPORTED_REPOSITORY = "openclaw/openclaw-windows-node";
+export const SUPPORTED_REPOSITORY = "wasimmostakim2965-ui/openclaw-windows-node";
 
 export const TRIAGE_INPUT_SCHEMA = {
     type: "object",

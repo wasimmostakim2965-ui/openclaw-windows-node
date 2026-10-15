@@ -1,12 +1,12 @@
 ---
 name: native-gateway-from-source
-description: Build the native (MSIX, isolated-session) OpenClaw Gateway from the latest openclaw/openclaw sources (or any ref, local checkout, or prebuilt openclaw.tgz), register it side by side with the Microsoft Store Gateway, and run Companion against it with OPENCLAW_NATIVE_GATEWAY_DEV_PATCH. Use when the user asks to test Companion with Gateway main, an unreleased Gateway change, or a source-built native Gateway, or to remove such a build.
+description: Build the native (MSIX, isolated-session) OpenClaw Gateway from the latest wasimmostakim2965-ui/Open-Wai sources (or any ref, local checkout, or prebuilt openclaw.tgz), register it side by side with the Microsoft Store Gateway, and run Companion against it with OPENCLAW_NATIVE_GATEWAY_DEV_PATCH. Use when the user asks to test Companion with Gateway main, an unreleased Gateway change, or a source-built native Gateway, or to remove such a build.
 ---
 
 # Native Gateway from source
 
 `scripts\Build-NativeGatewayFromSource.ps1` builds OpenClaw from source, packages it with
-`openclaw/openclaw-windows-packaging`, and registers a Developer Mode loose package named
+`wasimmostakim2965-ui/openclaw-windows-packaging`, and registers a Developer Mode loose package named
 `OpenClawFoundation.OpenClawGateway-<patch>` with aliases `openclaw-<patch>.exe` and
 `clawctl-<patch>.exe`. A "patch" is a side-by-side identity slot (upstream
 `Deploy-LocalPackage.ps1 -Patch`), not a version: each patch has its own app data, isolated
@@ -38,7 +38,7 @@ pwsh -File .\scripts\Build-NativeGatewayFromSource.ps1 -OpenClawRef main -Patch 
   roughly 25 to 30 minutes (`pnpm build` dominates). Run it in the background and do not poll.
 - Success ends with `Registered OpenClawFoundation.OpenClawGateway-source_<hash>` and
   `OpenClaw <version> (<full sha>)`. Compare the sha with
-  `git ls-remote https://github.com/openclaw/openclaw refs/heads/main`.
+  `git ls-remote https://github.com/wasimmostakim2965-ui/Open-Wai refs/heads/main`.
 - `main` of both repos moves often. Each rerun fetches them again; a new commit in either
   repo builds and re-registers a new payload. To get a reproducible rerun, pin both:
   `-OpenClawRef <full sha> -PackagingRef <full sha>`. A pinned rerun prints

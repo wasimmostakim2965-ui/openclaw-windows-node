@@ -80,11 +80,11 @@ probe nor listener provenance establishes an authenticated ready Gateway.
 Authentication and pairing retain their existing owners and gates.
 
 **Why the order is unchanged:** at upstream commit
-[`eb377ac59e6c9fd6c7705028034812becf00271b`](https://github.com/openclaw/openclaw/tree/eb377ac59e6c9fd6c7705028034812becf00271b),
-[`config-reload.ts`](https://github.com/openclaw/openclaw/blob/eb377ac59e6c9fd6c7705028034812becf00271b/src/gateway/config-reload.ts)
+[`eb377ac59e6c9fd6c7705028034812becf00271b`](https://github.com/wasimmostakim2965-ui/Open-Wai/tree/eb377ac59e6c9fd6c7705028034812becf00271b),
+[`config-reload.ts`](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/eb377ac59e6c9fd6c7705028034812becf00271b/src/gateway/config-reload.ts)
 commits the comparison baseline with `runtimeApplied: false` when the next
 mode is `off`.
-[`config-reload-plan.ts`](https://github.com/openclaw/openclaw/blob/eb377ac59e6c9fd6c7705028034812becf00271b/src/gateway/config-reload-plan.ts)
+[`config-reload-plan.ts`](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/eb377ac59e6c9fd6c7705028034812becf00271b/src/gateway/config-reload-plan.ts)
 classifies `gateway.reload` as `none`. Restoring `hybrid` alone is therefore
 not proof that earlier wizard settings were applied. A coalesced observation
 can include other changes, so it is also not a synchronization barrier against
@@ -93,7 +93,7 @@ write to reconcile with the replacement runtime and does not provide a
 documented ownership/coordinator-readiness handshake. No new public Gateway
 API, sleep, direct systemd restart, or sequencing assumption is introduced.
 The timing constants come from
-[`gateway-shutdown-budget.mjs`](https://github.com/openclaw/openclaw/blob/eb377ac59e6c9fd6c7705028034812becf00271b/gateway-shutdown-budget.mjs).
+[`gateway-shutdown-budget.mjs`](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/eb377ac59e6c9fd6c7705028034812becf00271b/gateway-shutdown-budget.mjs).
 
 `GatewayRestartLifecycleTests` reproduces the Companion command-boundary
 transition with injected serving-owner and typed-contention refusals, slow CLI

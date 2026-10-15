@@ -14,11 +14,11 @@ The short mental model is:
 The diagrams and claims below were verified on 2026-08-06 against:
 
 - OpenClaw Windows commit
-  [`d7d153ca5d409487e06ef584b1de1184520e90e6`](https://github.com/openclaw/openclaw-windows-node/tree/d7d153ca5d409487e06ef584b1de1184520e90e6)
+  [`d7d153ca5d409487e06ef584b1de1184520e90e6`](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/tree/d7d153ca5d409487e06ef584b1de1184520e90e6)
 - upstream OpenClaw commit
-  [`db90dff1396fecbf7029e9e9ea19d6c6ca3e644e`](https://github.com/openclaw/openclaw/tree/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e)
+  [`db90dff1396fecbf7029e9e9ea19d6c6ca3e644e`](https://github.com/wasimmostakim2965-ui/Open-Wai/tree/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e)
 - the managed gateway version installed by this repository,
-  [`v2026.6.11`](https://github.com/openclaw/openclaw/tree/v2026.6.11)
+  [`v2026.6.11`](https://github.com/wasimmostakim2965-ui/Open-Wai/tree/v2026.6.11)
 
 ## What are the important terms?
 
@@ -57,12 +57,12 @@ its node connection remains responsible only for the local Windows machine.
 
 **Evidence:** the Windows node handshake sends `role = "node"`, its own
 capabilities, commands, and permissions in
-[`WindowsNodeClient.cs`](https://github.com/openclaw/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/WindowsNodeClient.cs#L650-L714).
+[`WindowsNodeClient.cs`](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/WindowsNodeClient.cs#L650-L714).
 The operator client separately requests gateway-owned `node.list` in
-[`OpenClawGatewayClient.cs`](https://github.com/openclaw/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/OpenClawGatewayClient.cs#L742-L748).
+[`OpenClawGatewayClient.cs`](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/OpenClawGatewayClient.cs#L742-L748).
 Upstream defines operator as a control-plane role and node as a capability-host
 role in the
-[`Gateway protocol`](https://github.com/openclaw/openclaw/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/docs/gateway/protocol.md#roles-and-scopes).
+[`Gateway protocol`](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/docs/gateway/protocol.md#roles-and-scopes).
 
 ## Does a node know what other nodes are connected?
 
@@ -83,7 +83,7 @@ operator credentials and calls the operator API.
 
 **Evidence:** upstream node selection calls gateway-owned node listing before
 choosing a target in
-[`bash-tools.exec-host-node-phases.ts`](https://github.com/openclaw/openclaw/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/src/agents/bash-tools.exec-host-node-phases.ts).
+[`bash-tools.exec-host-node-phases.ts`](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/src/agents/bash-tools.exec-host-node-phases.ts).
 The Windows operator path stores the returned list in `AppState.Nodes`; the
 node transport has no equivalent peer-list field.
 
@@ -150,13 +150,13 @@ This preserves the authority split:
 - the Windows node remains authoritative for the file it will enforce.
 
 **Evidence:** the gateway blocks the raw commands in
-[`nodes.invoke.ts`](https://github.com/openclaw/openclaw/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/src/gateway/server-methods/nodes.invoke.ts).
+[`nodes.invoke.ts`](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/src/gateway/server-methods/nodes.invoke.ts).
 Windows compare-and-swap and monotonicity checks are in
-[`SystemCapability.cs`](https://github.com/openclaw/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/Capabilities/SystemCapability.cs#L449-L698).
+[`SystemCapability.cs`](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/Capabilities/SystemCapability.cs#L449-L698).
 
 `baseHash` travels in one direction only, and the upstream schema enforces that.
 In
-[`exec-approvals.ts`](https://github.com/openclaw/openclaw/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/packages/gateway-protocol/src/schema/exec-approvals.ts#L104-L165),
+[`exec-approvals.ts`](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/packages/gateway-protocol/src/schema/exec-approvals.ts#L104-L165),
 `ExecApprovalsNodeSnapshotSchema` sets `additionalProperties: false` at line 119
 and its no-file branch lists `{ required: ["baseHash"] }` at line 126 inside a
 `not.anyOf` guard:
@@ -237,7 +237,7 @@ distinct `host=node` selection and requires a paired node. This prevents
 "auto" from silently turning a sandboxed run into a remote node run.
 
 **Evidence:** host values and `auto` resolution are documented in upstream
-[`docs/tools/exec.md`](https://github.com/openclaw/openclaw/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/docs/tools/exec.md).
+[`docs/tools/exec.md`](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/docs/tools/exec.md).
 
 For a concrete Windows example, suppose "delete this" refers to a file that
 exists only on a selected Windows node and the model chooses shell exec. The
@@ -305,17 +305,17 @@ At the reviewed upstream revision, the flow is:
     result through `node.invoke.result`.
 
 **Evidence:** upstream orchestration is in
-[`bash-tools.exec-host-node.ts`](https://github.com/openclaw/openclaw/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/src/agents/bash-tools.exec-host-node.ts)
+[`bash-tools.exec-host-node.ts`](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/src/agents/bash-tools.exec-host-node.ts)
 and
-[`bash-tools.exec-host-node-phases.ts`](https://github.com/openclaw/openclaw/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/src/agents/bash-tools.exec-host-node-phases.ts).
+[`bash-tools.exec-host-node-phases.ts`](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/src/agents/bash-tools.exec-host-node-phases.ts).
 Platform wrapper construction is centralized in
-[`node-shell.ts`](https://github.com/openclaw/openclaw/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/src/infra/node-shell.ts).
+[`node-shell.ts`](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/src/infra/node-shell.ts).
 Gateway dispatch gates are in
-[`nodes.invoke.ts`](https://github.com/openclaw/openclaw/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/src/gateway/server-methods/nodes.invoke.ts).
+[`nodes.invoke.ts`](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/src/gateway/server-methods/nodes.invoke.ts).
 The default host policy and strict inline-eval exception are documented in
-[`docs/tools/exec.md`](https://github.com/openclaw/openclaw/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/docs/tools/exec.md)
+[`docs/tools/exec.md`](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/docs/tools/exec.md)
 and implemented by `shouldSkipNodeApprovalPrepare` in
-[`bash-tools.exec-host-node-phases.ts`](https://github.com/openclaw/openclaw/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/src/agents/bash-tools.exec-host-node-phases.ts).
+[`bash-tools.exec-host-node-phases.ts`](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/src/agents/bash-tools.exec-host-node-phases.ts).
 
 ## What exactly happens inside the Windows node for `system.run`?
 
@@ -351,11 +351,11 @@ The Windows path is:
     execution mode to the gateway.
 
 **Evidence:** Windows dispatch is in
-[`WindowsNodeClient.cs`](https://github.com/openclaw/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/WindowsNodeClient.cs#L1180-L1338).
+[`WindowsNodeClient.cs`](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/WindowsNodeClient.cs#L1180-L1338).
 The `system.run` boundary and execution call are in
-[`SystemCapability.cs`](https://github.com/openclaw/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/Capabilities/SystemCapability.cs#L195-L418).
+[`SystemCapability.cs`](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/Capabilities/SystemCapability.cs#L195-L418).
 The approval pipeline and execution-boundary revalidation are in
-[`ExecApprovalsCoordinator.cs`](https://github.com/openclaw/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/ExecApprovals/ExecApprovalsCoordinator.cs#L47-L389).
+[`ExecApprovalsCoordinator.cs`](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/ExecApprovals/ExecApprovalsCoordinator.cs#L47-L389).
 
 ## What is exec host policy, who chooses it, and how are policies combined?
 
@@ -451,13 +451,13 @@ directly, after which the node remains the decisive local gate.
 | Sandbox access policy | Owner of the selected sandbox or Windows node settings | Applied after routing and approval; can still prevent filesystem, network, clipboard, or UI access. |
 
 **Evidence:** upstream policy merging is implemented in
-[`bash-tools.exec-host-shared.ts`](https://github.com/openclaw/openclaw/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/src/agents/bash-tools.exec-host-shared.ts)
+[`bash-tools.exec-host-shared.ts`](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/src/agents/bash-tools.exec-host-shared.ts)
 and documented in
-[`docs/tools/exec.md`](https://github.com/openclaw/openclaw/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/docs/tools/exec.md)
+[`docs/tools/exec.md`](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/docs/tools/exec.md)
 and
-[`docs/tools/exec-approvals.md`](https://github.com/openclaw/openclaw/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/docs/tools/exec-approvals.md).
+[`docs/tools/exec-approvals.md`](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/docs/tools/exec-approvals.md).
 The Windows scalar cascade and additive wildcard/agent allowlists are in
-[`ExecApprovalsStore.cs`](https://github.com/openclaw/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/ExecApprovals/ExecApprovalsStore.cs#L787-L835).
+[`ExecApprovalsStore.cs`](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/ExecApprovals/ExecApprovalsStore.cs#L787-L835).
 
 ## Why are there both gateway and node exec approvals?
 
@@ -481,9 +481,9 @@ Windows local V2 still applies independently and defaults to `allowlist`,
 bypass token for the node.
 
 **Evidence:** upstream host defaults are documented in
-[`docs/tools/exec.md`](https://github.com/openclaw/openclaw/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/docs/tools/exec.md).
+[`docs/tools/exec.md`](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/docs/tools/exec.md).
 Windows defaults are resolved in
-[`ExecApprovalsStore.cs`](https://github.com/openclaw/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/ExecApprovals/ExecApprovalsStore.cs#L606-L621).
+[`ExecApprovalsStore.cs`](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/ExecApprovals/ExecApprovalsStore.cs#L606-L621).
 
 They are not both applied to every command:
 
@@ -537,10 +537,10 @@ moves a valid `exec-approvals.json` between state-directory locations. It does
 not migrate V1 `exec-policy.json` authorization semantics.
 
 **Evidence:** the V2 data model is in
-[`ExecApprovalsContracts.cs`](https://github.com/openclaw/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/ExecApprovals/ExecApprovalsContracts.cs).
+[`ExecApprovalsContracts.cs`](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/ExecApprovals/ExecApprovalsContracts.cs).
 The store requires file schema version 1 and migrates only a prior file
 location in
-[`ExecApprovalsStore.cs`](https://github.com/openclaw/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/ExecApprovals/ExecApprovalsStore.cs#L320-L454).
+[`ExecApprovalsStore.cs`](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/ExecApprovals/ExecApprovalsStore.cs#L320-L454).
 
 ## Is a command always wrapped in `/bin/sh`, `cmd.exe`, or PowerShell?
 
@@ -564,7 +564,7 @@ directly through `CreateProcess` without `cmd.exe`; V2 rejects them as a
 direct-argv executable rather than silently adding a shell after approval.
 
 **Evidence:** direct-argv launch and batch-file rejection are in
-[`LocalCommandRunner.cs`](https://github.com/openclaw/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/LocalCommandRunner.cs#L190-L235).
+[`LocalCommandRunner.cs`](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/LocalCommandRunner.cs#L190-L235).
 
 ## How does local command output finish draining?
 
@@ -668,13 +668,13 @@ in force.
 
 Windows UI access is not a process-enumeration permission and does not provide a
 supported host-wide process inventory. In the behavior reported in
-[issue #1149](https://github.com/openclaw/openclaw-windows-node/issues/1149),
+[issue #1149](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/issues/1149),
 `Get-CimInstance Win32_Process` could not connect and `tasklist` failed to
 complete. `Get-Process` output must not be treated as either a complete host
 inventory or a security guarantee that all host process metadata is hidden.
-[PR #1151](https://github.com/openclaw/openclaw-windows-node/pull/1151),
+[PR #1151](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/pull/1151),
 merged as
-[`36928782`](https://github.com/openclaw/openclaw-windows-node/commit/369287826f3966d67da251a91272dced1132a814),
+[`36928782`](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/commit/369287826f3966d67da251a91272dced1132a814),
 bounds cancellation cleanup so a killed or timed-out sandbox invocation
 returns; it does not change process visibility. Host-wide process inspection
 requires uncontained host execution with the applicable approvals.
@@ -684,13 +684,13 @@ background exec sessions for the same agent, not arbitrary operating-system
 processes.
 
 **Evidence:** local runner wiring is in
-[`NodeService.cs`](https://github.com/openclaw/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Tray.WinUI/Services/NodeService.cs#L589-L679).
+[`NodeService.cs`](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Tray.WinUI/Services/NodeService.cs#L589-L679).
 Fallback behavior is in
-[`MxcCommandRunner.cs`](https://github.com/openclaw/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/Mxc/MxcCommandRunner.cs#L99-L207).
+[`MxcCommandRunner.cs`](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/Mxc/MxcCommandRunner.cs#L99-L207).
 The direct `wxc-exec.exe` adapter is in
-[`DirectAppContainerExecutor.cs`](https://github.com/openclaw/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/Mxc/DirectAppContainerExecutor.cs#L61-L169).
+[`DirectAppContainerExecutor.cs`](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/Mxc/DirectAppContainerExecutor.cs#L61-L169).
 Gateway plugin policy runs before raw node dispatch in
-[`nodes.invoke.ts`](https://github.com/openclaw/openclaw/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/src/gateway/server-methods/nodes.invoke.ts).
+[`nodes.invoke.ts`](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/src/gateway/server-methods/nodes.invoke.ts).
 
 ## What is the bundled OpenClaw Policy plugin?
 
@@ -703,7 +703,7 @@ call, rewrite runtime behavior, or replace the actual tool, gateway, approval,
 node, and sandbox enforcement layers described above.
 
 **Evidence:** upstream states this explicitly in
-[`docs/cli/policy.md`](https://github.com/openclaw/openclaw/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/docs/cli/policy.md).
+[`docs/cli/policy.md`](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/docs/cli/policy.md).
 
 ## Are we pinned to a gateway protocol version or a gateway release?
 
@@ -759,11 +759,11 @@ later. The installed release and the connect range must therefore be reported
 independently.
 
 **Evidence:** Windows connect ranges are in
-[`WindowsNodeClient.cs`](https://github.com/openclaw/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/WindowsNodeClient.cs#L676-L714)
+[`WindowsNodeClient.cs`](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/WindowsNodeClient.cs#L676-L714)
 and
-[`OpenClawGatewayClient.cs`](https://github.com/openclaw/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/OpenClawGatewayClient.cs#L1492-L1510).
+[`OpenClawGatewayClient.cs`](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/blob/d7d153ca5d409487e06ef584b1de1184520e90e6/src/OpenClaw.Shared/OpenClawGatewayClient.cs#L1492-L1510).
 The current upstream constants are in
-[`version.ts`](https://github.com/openclaw/openclaw/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/packages/gateway-protocol/src/version.ts).
+[`version.ts`](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/db90dff1396fecbf7029e9e9ea19d6c6ca3e644e/packages/gateway-protocol/src/version.ts).
 The managed install checks are in
 [`GatewayInstallPolicy.cs`](../src/OpenClaw.SetupEngine/GatewayInstallPolicy.cs).
 

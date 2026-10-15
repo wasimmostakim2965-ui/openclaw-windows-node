@@ -41,19 +41,19 @@ The execution FAQ pins its audit to upstream commit
 follow `main` for ongoing pairing research and must be rechecked before relying
 on newer behavior.
 
-- `https://github.com/openclaw/openclaw/blob/main/docs/gateway/protocol.md`
-- `https://github.com/openclaw/openclaw/blob/main/docs/gateway/pairing.md`
-- `https://github.com/openclaw/openclaw/blob/main/docs/gateway/operator-scopes.md`
-- `https://github.com/openclaw/openclaw/blob/main/docs/cli/qr.md`
-- `https://github.com/openclaw/openclaw/blob/main/docs/cli/devices.md`
-- `https://github.com/openclaw/openclaw/blob/main/src/pairing/setup-code.ts`
-- `https://github.com/openclaw/openclaw/blob/main/src/infra/device-bootstrap.ts`
-- `https://github.com/openclaw/openclaw/blob/main/src/shared/device-bootstrap-profile.ts`
-- `https://github.com/openclaw/openclaw/blob/main/src/gateway/server/ws-connection/auth-context.ts`
-- `https://github.com/openclaw/openclaw/blob/main/src/gateway/server/ws-connection/handshake-auth-helpers.ts`
-- `https://github.com/openclaw/openclaw/blob/main/src/gateway/server/ws-connection/message-handler.ts`
-- `https://github.com/openclaw/openclaw/blob/main/src/gateway/server-methods/nodes.ts`
-- `https://github.com/openclaw/openclaw/blob/main/packages/gateway-protocol/src/schema/frames.ts`
+- `https://github.com/wasimmostakim2965-ui/Open-Wai/blob/main/docs/gateway/protocol.md`
+- `https://github.com/wasimmostakim2965-ui/Open-Wai/blob/main/docs/gateway/pairing.md`
+- `https://github.com/wasimmostakim2965-ui/Open-Wai/blob/main/docs/gateway/operator-scopes.md`
+- `https://github.com/wasimmostakim2965-ui/Open-Wai/blob/main/docs/cli/qr.md`
+- `https://github.com/wasimmostakim2965-ui/Open-Wai/blob/main/docs/cli/devices.md`
+- `https://github.com/wasimmostakim2965-ui/Open-Wai/blob/main/src/pairing/setup-code.ts`
+- `https://github.com/wasimmostakim2965-ui/Open-Wai/blob/main/src/infra/device-bootstrap.ts`
+- `https://github.com/wasimmostakim2965-ui/Open-Wai/blob/main/src/shared/device-bootstrap-profile.ts`
+- `https://github.com/wasimmostakim2965-ui/Open-Wai/blob/main/src/gateway/server/ws-connection/auth-context.ts`
+- `https://github.com/wasimmostakim2965-ui/Open-Wai/blob/main/src/gateway/server/ws-connection/handshake-auth-helpers.ts`
+- `https://github.com/wasimmostakim2965-ui/Open-Wai/blob/main/src/gateway/server/ws-connection/message-handler.ts`
+- `https://github.com/wasimmostakim2965-ui/Open-Wai/blob/main/src/gateway/server-methods/nodes.ts`
+- `https://github.com/wasimmostakim2965-ui/Open-Wai/blob/main/packages/gateway-protocol/src/schema/frames.ts`
 
 The setup engine uses the official installer without `--version`, so npm
 `latest` selects the stable OpenClaw package. Setup records the installed CLI

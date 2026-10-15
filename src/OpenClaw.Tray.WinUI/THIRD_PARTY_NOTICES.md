@@ -73,7 +73,7 @@ SOFTWARE.
 `ChatModelLabels.FormatProviderName` follows the provider branding and
 separator-based fallback in OpenClaw's published Control UI:
 
-- <https://github.com/openclaw/openclaw/blob/3a9d69db306cd7f081e06254cb89c4bcc14a7107/ui/src/components/provider-icon.ts>
+- <https://github.com/wasimmostakim2965-ui/Open-Wai/blob/3a9d69db306cd7f081e06254cb89c4bcc14a7107/ui/src/components/provider-icon.ts>
 
 The OpenClaw MIT notice below also applies to this mapping.
 
@@ -83,8 +83,8 @@ The OpenClaw MIT notice below also applies to this mapping.
 calculation from OpenClaw's published Control UI at commit
 `3a9d69db306cd7f081e06254cb89c4bcc14a7107`:
 
-- <https://github.com/openclaw/openclaw/blob/3a9d69db306cd7f081e06254cb89c4bcc14a7107/ui/src/pages/chat/components/chat-effort-picker.ts>
-- <https://github.com/openclaw/openclaw/blob/3a9d69db306cd7f081e06254cb89c4bcc14a7107/ui/src/components/icons-tools.ts>
+- <https://github.com/wasimmostakim2965-ui/Open-Wai/blob/3a9d69db306cd7f081e06254cb89c4bcc14a7107/ui/src/pages/chat/components/chat-effort-picker.ts>
+- <https://github.com/wasimmostakim2965-ui/Open-Wai/blob/3a9d69db306cd7f081e06254cb89c4bcc14a7107/ui/src/components/icons-tools.ts>
 
 The vector is rendered with native WinUI shapes. OpenClaw identifies the shared
 stroke-icon shell as Lucide; both notices are retained here.

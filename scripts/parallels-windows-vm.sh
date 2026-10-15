@@ -14,7 +14,7 @@ APP_SNAPSHOT="pre-openclaw-windows-app-e2e-${TODAY}"
 APP_SNAPSHOT_EXPLICIT=0
 SELECTED_SNAPSHOT=""
 GUEST_CHECKOUT=""
-REPO_URL="https://github.com/openclaw/openclaw-windows-node.git"
+REPO_URL="https://github.com/wasimmostakim2965-ui/openclaw-windows-node.git"
 REPO_REF=""
 SKIP_RESTORE=0
 
@@ -66,7 +66,7 @@ esac
 
 [[ -f "$BASE_CONTROLLER" ]] || {
   printf 'error: OpenClaw Parallels controller not found: %s\n' "$BASE_CONTROLLER" >&2
-  printf 'clone https://github.com/openclaw/openclaw beside this repo or set OPENCLAW_REPO\n' >&2
+  printf 'clone https://github.com/wasimmostakim2965-ui/Open-Wai beside this repo or set OPENCLAW_REPO\n' >&2
   exit 1
 }
 

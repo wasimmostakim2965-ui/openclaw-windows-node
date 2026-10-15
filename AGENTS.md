@@ -2,7 +2,7 @@
 
 ## Gateway MSIX Packaging
 
-For Gateway MSIX packaging, use [openclaw-windows-packaging](https://github.com/openclaw/openclaw-windows-packaging).
+For Gateway MSIX packaging, use [openclaw-windows-packaging](https://github.com/wasimmostakim2965-ui/openclaw-windows-packaging).
 
 ## Required Validation After Every Change
 

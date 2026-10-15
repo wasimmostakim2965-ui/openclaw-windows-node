@@ -106,13 +106,13 @@ test("reports check totals and stale base", () => {
 test("maps closing keywords, explicit references, and cross-references", () => {
   const body = [
     "Fixes #42",
-    "Related: openclaw/openclaw-windows-node#44",
-    "https://github.com/openclaw/openclaw-windows-node/issues/45",
+    "Related: wasimmostakim2965-ui/openclaw-windows-node#44",
+    "https://github.com/wasimmostakim2965-ui/openclaw-windows-node/issues/45",
     "Unrelated to #46",
     "Fixes other/repo#99",
   ].join("\n");
   assert.deepEqual(
-    triage.extractReferencedIssueNumbers(body, "openclaw/openclaw-windows-node"),
+    triage.extractReferencedIssueNumbers(body, "wasimmostakim2965-ui/openclaw-windows-node"),
     [42, 44],
   );
   assert.deepEqual(
@@ -126,7 +126,7 @@ test("maps closing keywords, explicit references, and cross-references", () => {
         "`Fixes #4`",
         "    Fixes #5",
         "Not related to #6",
-        "Unrelated to openclaw/openclaw-windows-node#7",
+        "Unrelated to wasimmostakim2965-ui/openclaw-windows-node#7",
         "    - Fixes #8",
         "- Nested ownership",
         "    - Fixes #9",
@@ -139,7 +139,7 @@ test("maps closing keywords, explicit references, and cross-references", () => {
         "",
         "    - Fixes #11",
         "Does not fix #12",
-        "Will not close openclaw/openclaw-windows-node#13",
+        "Will not close wasimmostakim2965-ui/openclaw-windows-node#13",
         "Not resolved by #14",
         "~~~text",
         "Fixes #15",
@@ -159,10 +159,10 @@ test("maps closing keywords, explicit references, and cross-references", () => {
         "```lang`oops",
         "Fixes #27",
         "Does fix #28",
-        "Will close openclaw/openclaw-windows-node#29",
+        "Will close wasimmostakim2965-ui/openclaw-windows-node#29",
         "Can resolve #30",
         "Doesn't fix #31",
-        "Didn’t close openclaw/openclaw-windows-node#32",
+        "Didn’t close wasimmostakim2965-ui/openclaw-windows-node#32",
         "Won't resolve #33",
         "Can’t fix #34",
         "Couldn't close #35",
@@ -172,7 +172,7 @@ test("maps closing keywords, explicit references, and cross-references", () => {
         "~~~text",
         "Fixes #20",
       ].join("\n"),
-      "openclaw/openclaw-windows-node",
+      "wasimmostakim2965-ui/openclaw-windows-node",
     ),
     [1, 26, 27, 28, 29, 30],
   );
@@ -184,13 +184,13 @@ test("maps closing keywords, explicit references, and cross-references", () => {
           issue: {
             number: 51,
             pull_request: {},
-            repository_url: "https://api.github.com/repos/openclaw/openclaw-windows-node",
+            repository_url: "https://api.github.com/repos/wasimmostakim2965-ui/openclaw-windows-node",
             body: "Fixes #42",
           },
         },
       },
       new Set([51]),
-      "openclaw/openclaw-windows-node",
+      "wasimmostakim2965-ui/openclaw-windows-node",
       42,
     ),
     51,
@@ -203,13 +203,13 @@ test("maps closing keywords, explicit references, and cross-references", () => {
           issue: {
             number: 52,
             pull_request: {},
-            repository_url: "https://api.github.com/repos/openclaw/openclaw-windows-node",
+            repository_url: "https://api.github.com/repos/wasimmostakim2965-ui/openclaw-windows-node",
             body: "Fixes #42",
           },
         },
       },
       new Set([51]),
-      "openclaw/openclaw-windows-node",
+      "wasimmostakim2965-ui/openclaw-windows-node",
       42,
     ),
     null,
@@ -228,7 +228,7 @@ test("maps closing keywords, explicit references, and cross-references", () => {
         },
       },
       new Set([51]),
-      "openclaw/openclaw-windows-node",
+      "wasimmostakim2965-ui/openclaw-windows-node",
       42,
     ),
     null,
@@ -241,13 +241,13 @@ test("maps closing keywords, explicit references, and cross-references", () => {
           issue: {
             number: 51,
             pull_request: {},
-            repository_url: "https://api.github.com/repos/openclaw/openclaw-windows-node",
+            repository_url: "https://api.github.com/repos/wasimmostakim2965-ui/openclaw-windows-node",
             body: "Incidental mention with no current issue ownership",
           },
         },
       },
       new Set([51]),
-      "openclaw/openclaw-windows-node",
+      "wasimmostakim2965-ui/openclaw-windows-node",
       42,
     ),
     null,
@@ -258,7 +258,7 @@ test("collects every nested file and check page before reporting", async () => {
   const pullRequest = {
     number: 10,
     title: "docs: update two pages",
-    url: "https://github.com/openclaw/openclaw-windows-node/pull/10",
+    url: "https://github.com/wasimmostakim2965-ui/openclaw-windows-node/pull/10",
     body: "Fixes #20",
     baseRefName: "main",
     mergeStateStatus: "BEHIND",
@@ -289,7 +289,7 @@ test("collects every nested file and check page before reporting", async () => {
   const issue = {
     number: 20,
     title: "Documentation gap",
-    url: "https://github.com/openclaw/openclaw-windows-node/issues/20",
+    url: "https://github.com/wasimmostakim2965-ui/openclaw-windows-node/issues/20",
     author: { __typename: "User", login: "bob" },
     labels: labels(),
     assignees: { nodes: [] },
@@ -363,7 +363,7 @@ test("collects every nested file and check page before reporting", async () => {
           issue: {
             number: 10,
             pull_request: {},
-            repository_url: "https://api.github.com/repos/openclaw/openclaw-windows-node",
+            repository_url: "https://api.github.com/repos/wasimmostakim2965-ui/openclaw-windows-node",
             body: "Fixes #20",
           },
         },
@@ -1030,13 +1030,13 @@ test("workflow is report-only by default and cleanup is manually gated", () => {
 test("report escapes contributor-controlled Markdown and HTML", () => {
   const report = triage.renderReport(
     {
-      repository: "openclaw/openclaw-windows-node",
+      repository: "wasimmostakim2965-ui/openclaw-windows-node",
       defaultBranchName: "main",
       pullRequests: [
         {
           number: 1,
           title: "[click](https://attacker.example) <img src=x> | spoof",
-          url: "https://github.com/openclaw/openclaw-windows-node/pull/1",
+          url: "https://github.com/wasimmostakim2965-ui/openclaw-windows-node/pull/1",
           body: "",
           mergeable: "MERGEABLE",
           baseRefName: "main",

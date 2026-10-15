@@ -14,7 +14,7 @@ namespace OpenClaw.Shared.Tests.Protocol;
 /// <c>commands</c> / compaction surface.
 ///
 /// The Windows companion can silently drift from the upstream
-/// <c>openclaw/openclaw</c> gateway protocol
+/// <c>wasimmostakim2965-ui/Open-Wai</c> gateway protocol
 /// (<c>packages/gateway-protocol/src/schema/{sessions,commands}.ts</c>): because
 /// the gateway tolerates unknown/extra fields, a client sending stale shapes fails
 /// no existing test. This test pins a hand-maintained mirror of that schema in

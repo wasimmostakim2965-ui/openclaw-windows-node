@@ -219,7 +219,7 @@ are logged and retain emoji/initials. The secondary `main`-style label is the
 agent ID, not a Git branch; this RPC has no branch-name field. Selection honors
 `defaultId` and `selectionRequired`, without sending a chat or creating a session
 when metadata refreshes. Existing item identities/pictures survive roster refresh.
-Contract reference: `openclaw/openclaw` gateway `agents-list.ts`,
+Contract reference: `wasimmostakim2965-ui/Open-Wai` gateway `agents-list.ts`,
 `session-utils-store.ts`, and `packages/gateway-protocol/src/schema/agents-models-skills.ts`.
 Search retains the existing catalog and keyboard shortcuts through a native
 flyout. Both Frame history stacks prune unavailable gateway/diagnostics routes.

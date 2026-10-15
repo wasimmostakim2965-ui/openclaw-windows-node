@@ -179,7 +179,7 @@ Current ownership references:
 - `src\OpenClaw.Shared\WindowsStartupTaskRegistration.cs`: scheduled startup task.
 
 Native package implementation and lifecycle contract belong to
-[openclaw-windows-packaging](https://github.com/openclaw/openclaw-windows-packaging).
+[openclaw-windows-packaging](https://github.com/wasimmostakim2965-ui/openclaw-windows-packaging).
 Check the installed CLI's help for compatibility rather than inventing teardown
 flags or assuming that stopping a gateway also removes its MXC account.
 

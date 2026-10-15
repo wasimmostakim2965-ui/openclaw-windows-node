@@ -4328,7 +4328,7 @@ public class OpenClawGatewayClientTests
     [Fact]
     public void ParseNodeListPayload_PopulatesAllNodeListNodeFields()
     {
-        // Mirrors the full NodeListNode schema from openclaw/openclaw
+        // Mirrors the full NodeListNode schema from wasimmostakim2965-ui/Open-Wai
         // src/shared/node-list-types.ts so we don't lose data the gateway
         // already sends. Uses the production *Ms timestamp names.
         var helper = new GatewayClientTestHelper();

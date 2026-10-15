@@ -31,8 +31,8 @@ jobs:
       - name: Require canonical main
         shell: pwsh
         run: |
-          if ($env:GITHUB_REPOSITORY -cne 'openclaw/openclaw-windows-node' -or $env:GITHUB_REF -cne 'refs/heads/main') {
-            throw 'Run promotion on main in openclaw/openclaw-windows-node.'
+          if ($env:GITHUB_REPOSITORY -cne 'wasimmostakim2965-ui/openclaw-windows-node' -or $env:GITHUB_REF -cne 'refs/heads/main') {
+            throw 'Run promotion on main in wasimmostakim2965-ui/openclaw-windows-node.'
           }
       - uses: actions/checkout@v7
         with:
@@ -57,10 +57,10 @@ jobs:
             "| Stable | $($record.stableTag) |"
             "| Product SHA | $($record.sourceSha) |"
             "| Pipeline SHA | $($record.pipelineSha) |"
-            "| Original CI | https://github.com/openclaw/openclaw-windows-node/actions/runs/$($record.alphaRunId) |"
+            "| Original CI | https://github.com/wasimmostakim2965-ui/openclaw-windows-node/actions/runs/$($record.alphaRunId) |"
             ""
-            "[Included changes](https://github.com/openclaw/openclaw-windows-node/compare/$($record.previousStableTag)...$($record.alphaTag))"
-            "[Excluded newer changes](https://github.com/openclaw/openclaw-windows-node/compare/$($record.alphaTag)...$($record.pipelineSha))"
+            "[Included changes](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/compare/$($record.previousStableTag)...$($record.alphaTag))"
+            "[Excluded newer changes](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/compare/$($record.alphaTag)...$($record.pipelineSha))"
             ""
             "Preview does not create tags, reserve MSIX versions, sign, or publish."
           ) >> $env:GITHUB_STEP_SUMMARY

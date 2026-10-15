@@ -131,10 +131,10 @@ function Assert-WorkflowClassification {
 
 Write-Host "Validating correction release source contract..."
 $validatorSource = Get-Content -LiteralPath $validatorPath -Raw
-if ($validatorSource -match 'repos/openclaw/openclaw/') {
-    throw "Validator must not depend on the openclaw/openclaw release API."
+if ($validatorSource -match 'repos/wasimmostakim2965-ui/Open-Wai/') {
+    throw "Validator must not depend on the wasimmostakim2965-ui/Open-Wai release API."
 }
-if ($validatorSource -notmatch 'repos/openclaw/openclaw-windows-node/releases/latest') {
+if ($validatorSource -notmatch 'repos/wasimmostakim2965-ui/openclaw-windows-node/releases/latest') {
     throw "Validator must resolve the current Windows latest release tag."
 }
 

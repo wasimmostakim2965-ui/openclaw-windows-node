@@ -211,7 +211,7 @@ only its descriptor with a new profile for the installed package; old workspace
 files, configuration and credentials are preserved. Published profiles cannot
 be discarded through this recovery.
 No local MSIX path or environment-variable configuration is required. To test a
-Gateway built from `openclaw/openclaw` source instead, register it with
+Gateway built from `wasimmostakim2965-ui/Open-Wai` source instead, register it with
 `scripts\Build-NativeGatewayFromSource.ps1 -Patch <patch>` and start Companion with
 `OPENCLAW_NATIVE_GATEWAY_DEV_PATCH=<patch>`. Native setup then uses only
 `OpenClawFoundation.OpenClawGateway-<patch>` and never falls back to the Store or WinGet.
@@ -334,7 +334,7 @@ The native path does not enter the WSL
 cleanup, Local AI installation, or WSL repair pipelines.
 
 The legacy proof path was based on the packaging contract at
-[`9a8cd4a`](https://github.com/openclaw/openclaw-windows-packaging/tree/9a8cd4af139513c21d290a01a8a1f2be19b602bc).
+[`9a8cd4a`](https://github.com/wasimmostakim2965-ui/openclaw-windows-packaging/tree/9a8cd4af139513c21d290a01a8a1f2be19b602bc).
 The current source's isolated path instead requires the versioned
 `clawctl status --json` integration, agent-side configuration and
 `gateway-service status --json` listener attribution. MSIX registration or
@@ -495,13 +495,13 @@ Fresh route/device/session proof and single-use consumption still fence navigati
 and deadline cancellation reaches the active navigation request before settlement.
 
 **Installed package limitation:** package commit
-[`133deeb`](https://github.com/openclaw/openclaw-windows-packaging/tree/133deeb1a5efac2bcbc6564c90c038a999e6e842)
+[`133deeb`](https://github.com/wasimmostakim2965-ui/openclaw-windows-packaging/tree/133deeb1a5efac2bcbc6564c90c038a999e6e842)
 (MSIX 2026.9.700.0, payload 2026.9.7) cannot safely expose its pending start:
-[`GatewayController`](https://github.com/openclaw/openclaw-windows-packaging/blob/133deeb1a5efac2bcbc6564c90c038a999e6e842/src/OpenClaw.Launcher/Gateway/GatewayController.cs)
+[`GatewayController`](https://github.com/wasimmostakim2965-ui/openclaw-windows-packaging/blob/133deeb1a5efac2bcbc6564c90c038a999e6e842/src/OpenClaw.Launcher/Gateway/GatewayController.cs)
 returns `Starting` after its 90-second listener wait;
-[`Program.WriteGatewayStartResult`](https://github.com/openclaw/openclaw-windows-packaging/blob/133deeb1a5efac2bcbc6564c90c038a999e6e842/src/OpenClaw.Launcher/Program.cs)
+[`Program.WriteGatewayStartResult`](https://github.com/wasimmostakim2965-ui/openclaw-windows-packaging/blob/133deeb1a5efac2bcbc6564c90c038a999e6e842/src/OpenClaw.Launcher/Program.cs)
 maps it to exit 1; and
-[`ClawCtlJson.FromGateway`](https://github.com/openclaw/openclaw-windows-packaging/blob/133deeb1a5efac2bcbc6564c90c038a999e6e842/src/OpenClaw.Launcher/ClawCtlJson.cs)
+[`ClawCtlJson.FromGateway`](https://github.com/wasimmostakim2965-ui/openclaw-windows-packaging/blob/133deeb1a5efac2bcbc6564c90c038a999e6e842/src/OpenClaw.Launcher/ClawCtlJson.cs)
 omits the Gateway object for that failed start. Only `ok:false` and a generic
 `cli_error` with human text remain. Its subsequent `unhealthy` status supplies no
 pending sandbox/process ownership proof. Companion intentionally rejects that
@@ -1036,7 +1036,7 @@ up to 30 seconds for the existing connection's fresh same-authority handshake
 before exact verification; timeout offers reconciliation without mutation replay.
 
 This interaction comparison is pinned to
-`openclaw/openclaw@d69a5e74895cf64109eca0d3a172c17b74ddbe7b`,
+`wasimmostakim2965-ui/Open-Wai@d69a5e74895cf64109eca0d3a172c17b74ddbe7b`,
 `OnboardingAISetup.swift:1181-1212,1474-1506` and
 `OnboardingAISetupSheet.swift:52-57,127-137,183-212`.
 The compact Windows header and continuous dialog are intentional density/lifetime
@@ -1071,7 +1071,7 @@ is unchanged. Hiding the local row collapses its empty container, not independen
 detected Gateway choices.
 
 The layout comparison is pinned to
-[`OnboardingAISetupView.swift` at `fef6b1290e412761888865da5b61ee1c0ce29586`](https://github.com/openclaw/openclaw/blob/fef6b1290e412761888865da5b61ee1c0ce29586/apps/macos/Sources/OpenClaw/OnboardingAISetupView.swift#L191-L674):
+[`OnboardingAISetupView.swift` at `fef6b1290e412761888865da5b61ee1c0ce29586`](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/fef6b1290e412761888865da5b61ee1c0ce29586/apps/macos/Sources/OpenClaw/OnboardingAISetupView.swift#L191-L674):
 results at 191-254, candidate rows at 313-350, preparation at 440-480,
 API Keys at 543-571, auth at 574-613 and manual entry at 616-674. Windows keeps
 its managed local primary-model lifecycle and explicit consent, not Mac credential
@@ -1110,24 +1110,24 @@ setup lock. Settings and headless entry points retain their existing contracts.
 #### Setup and utility metadata compatibility
 
 The pinned upstream contract is
-[`openclaw/openclaw@fef6b1290e412761888865da5b61ee1c0ce29586`](https://github.com/openclaw/openclaw/tree/fef6b1290e412761888865da5b61ee1c0ce29586).
+[`wasimmostakim2965-ui/Open-Wai@fef6b1290e412761888865da5b61ee1c0ce29586`](https://github.com/wasimmostakim2965-ui/Open-Wai/tree/fef6b1290e412761888865da5b61ee1c0ce29586).
 The same setup schema blob (`dbd8461f87f034b675b874313d2f401ac7c682c9`)
 is present in release `v2026.9.6` at
 `eb377ac59e6c9fd6c7705028034812becf00271b`.
 
-- [Schema lines 255-374](https://github.com/openclaw/openclaw/blob/fef6b1290e412761888865da5b61ee1c0ce29586/packages/gateway-protocol/src/schema/openclaw.ts#L255-L374):
+- [Schema lines 255-374](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/fef6b1290e412761888865da5b61ee1c0ce29586/packages/gateway-protocol/src/schema/openclaw.ts#L255-L374):
   optional `modelTarget: "utility"` decorates the same choice kinds;
   `setupModel` and `utilityModel` are preserved alongside `configuredModel`.
-- [Role validation](https://github.com/openclaw/openclaw/blob/fef6b1290e412761888865da5b61ee1c0ce29586/src/system-agent/setup-inference-core.ts#L583-L594)
+- [Role validation](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/fef6b1290e412761888865da5b61ee1c0ce29586/src/system-agent/setup-inference-core.ts#L583-L594)
   (blob `6b8cc6e07ee6fb5367c7fd050fc4a53fd63bfc5b`) requires exact role matching.
-  [Provider staging](https://github.com/openclaw/openclaw/blob/fef6b1290e412761888865da5b61ee1c0ce29586/src/system-agent/setup-inference-credentials.ts#L376-L396)
+  [Provider staging](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/fef6b1290e412761888865da5b61ee1c0ce29586/src/system-agent/setup-inference-credentials.ts#L376-L396)
   (blob `9d93a352ed2342a695d9d189c4d1a8eefe7e016f`) enforces it too.
-- [Existing-model activation](https://github.com/openclaw/openclaw/blob/fef6b1290e412761888865da5b61ee1c0ce29586/src/system-agent/setup-inference-activate.ts#L121-L148)
+- [Existing-model activation](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/fef6b1290e412761888865da5b61ee1c0ce29586/src/system-agent/setup-inference-activate.ts#L121-L148)
   (blob `b3abbf8dbf42b8a84d8fb06702eaba027edb2aca`) checks exact model and role.
-- [Utility route selection](https://github.com/openclaw/openclaw/blob/fef6b1290e412761888865da5b61ee1c0ce29586/src/agents/utility-model.ts#L17-L50)
+- [Utility route selection](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/fef6b1290e412761888865da5b61ee1c0ce29586/src/agents/utility-model.ts#L17-L50)
   (blob `666784e3cd5e8a689fbc287e692f5f13628b36ba`) can use a utility route when
   no primary exists.
-- [Verification result](https://github.com/openclaw/openclaw/blob/fef6b1290e412761888865da5b61ee1c0ce29586/src/system-agent/setup-inference-turn.ts#L582-L694)
+- [Verification result](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/fef6b1290e412761888865da5b61ee1c0ce29586/src/system-agent/setup-inference-turn.ts#L582-L694)
   (blob `1ce3a7737950f89798e655c7167e29bb72dbe535`) includes that role.
 
 Windows hides utility-only choices from the main-assistant list with a visible

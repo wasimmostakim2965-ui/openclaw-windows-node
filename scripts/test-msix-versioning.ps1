@@ -21,7 +21,7 @@ $metadataPath = Join-Path $temporaryRoot 'version-info.json'
 $token = 'test-token'
 $commit = 'a' * 40
 $otherCommit = 'b' * 40
-$repository = 'openclaw/openclaw-windows-node'
+$repository = 'wasimmostakim2965-ui/openclaw-windows-node'
 $msixTestState = @{
     cases = 0; assertions = 0; totalRequests = 0
     refs = @{}; tags = @{}; sourceRefs = @{}; requests = $null; nextSha = 0

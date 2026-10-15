@@ -8,7 +8,7 @@ namespace OpenClaw.Shared;
 // Gateway protocol DTOs.
 //
 // These mirror the canonical upstream gateway protocol
-// (openclaw/openclaw, packages/gateway-protocol/src/schema) for:
+// (wasimmostakim2965-ui/Open-Wai, packages/gateway-protocol/src/schema) for:
 //   • commands.list           — the command catalog
 //   • sessions.patch          — the extended per-session preference field set
 //   • sessions.files.list/get — session workspace file rail + browser

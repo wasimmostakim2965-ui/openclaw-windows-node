@@ -397,7 +397,7 @@ Preparation checks unrelated or duplicate drafts before reserving the tag.
 
 ```powershell
 gh workflow run promote-alpha-release.yml `
-  --repo openclaw/openclaw-windows-node --ref main `
+  --repo wasimmostakim2965-ui/openclaw-windows-node --ref main `
   -f alpha_tag=v2026.9.5-alpha.93 -f prepare=false
 ```
 
@@ -419,7 +419,7 @@ Rerun with `prepare=true` to authorize reservation and building:
 
 ```powershell
 gh workflow run promote-alpha-release.yml `
-  --repo openclaw/openclaw-windows-node --ref main `
+  --repo wasimmostakim2965-ui/openclaw-windows-node --ref main `
   -f alpha_tag=v2026.9.5-alpha.93 -f prepare=true
 ```
 
@@ -562,7 +562,7 @@ modify, resubmit, or claim acceptance of the package already in Microsoft Store.
 4. Watch the tagged workflow.
 
    ```powershell
-   gh run list --repo openclaw/openclaw-windows-node `
+   gh run list --repo wasimmostakim2965-ui/openclaw-windows-node `
      --workflow "Build and Test" `
      --limit 10
    ```
@@ -580,7 +580,7 @@ modify, resubmit, or claim acceptance of the package already in Microsoft Store.
    non-prerelease releases; alpha tags should be prereleases and not latest.
 
    ```powershell
-   gh release view $tag --repo openclaw/openclaw-windows-node `
+   gh release view $tag --repo wasimmostakim2965-ui/openclaw-windows-node `
      --json tagName,isPrerelease,isLatest,url,assets
    ```
 
@@ -791,7 +791,7 @@ write access can use **Actions > Daily Alpha Release > Run workflow**, or:
 
 ```powershell
 gh workflow run daily-alpha-release.yml `
-  --repo openclaw/openclaw-windows-node --ref main
+  --repo wasimmostakim2965-ui/openclaw-windows-node --ref main
 ```
 
 This is a request to release the **current default branch**, not the selected
@@ -878,7 +878,7 @@ secret. The release job runs in the `release-signing` environment and requires:
 
 Do not add `AZURE_CLIENT_SECRET` back to the release workflow. The Entra app
 registration should have a federated credential for:
-`repo:openclaw/openclaw-windows-node:environment:release-signing`.
+`repo:wasimmostakim2965-ui/openclaw-windows-node:environment:release-signing`.
 
 ## How CI signs payload binaries
 
@@ -938,7 +938,7 @@ verify:
 
 ```powershell
 $tag = "v0.6.12" # replace with the tag being verified
-gh release view $tag --repo openclaw/openclaw-windows-node `
+gh release view $tag --repo wasimmostakim2965-ui/openclaw-windows-node `
   --json tagName,isPrerelease,isLatest,url,assets
 ```
 
@@ -971,7 +971,7 @@ git rev-parse origin/main
 $tagPrefix = "vX.Y.Z" # use the stable or prerelease version family being fixed
 git ls-remote --tags origin "refs/tags/$tagPrefix*"
 
-gh run list --repo openclaw/openclaw-windows-node `
+gh run list --repo wasimmostakim2965-ui/openclaw-windows-node `
   --workflow "Build and Test" `
   --limit 10
 ```

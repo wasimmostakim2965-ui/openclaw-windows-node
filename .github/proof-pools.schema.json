@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://github.com/openclaw/openclaw-windows-node/blob/main/.github/proof-pools.schema.json",
+  "$id": "https://github.com/wasimmostakim2965-ui/openclaw-windows-node/blob/main/.github/proof-pools.schema.json",
   "title": "OpenClaw Windows proof pool inventory",
   "type": "object",
   "additionalProperties": false,

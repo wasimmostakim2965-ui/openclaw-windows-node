@@ -400,7 +400,7 @@ slots, and larger patches cannot be encoded.
 Only `push` or `workflow_dispatch` builds of `v*` tags in the upstream repository
 reserve versions. A separate write-scoped job allocates once before the
 architecture matrix. PRs, ordinary main builds, and fork builds resolve Latest
-from `openclaw/openclaw-windows-node`, then read the next candidate from that
+from `wasimmostakim2965-ui/openclaw-windows-node`, then read the next candidate from that
 same canonical reservation ledger. They are marked `preview` in
 `msixVersionAllocation` in each metadata sidecar and are not official release
 or Store-submission versions.
@@ -426,7 +426,7 @@ $info = .\scripts\Resolve-MsixPackageVersion.ps1 `
   -SourceVersion (.\scripts\Get-OpenClawMsixPreviewSourceVersion.ps1) `
   -SourceCommit (git rev-parse HEAD) `
   -SourceRef "refs/heads/$(git branch --show-current)" `
-  -Repository openclaw/openclaw-windows-node
+  -Repository wasimmostakim2965-ui/openclaw-windows-node
 $info | ConvertTo-Json -Depth 4 |
   Set-Content "$env:TEMP\openclaw-msix-preview.json" -Encoding utf8
 .\scripts\Build-StoreMsix.ps1 -Architecture x64 `

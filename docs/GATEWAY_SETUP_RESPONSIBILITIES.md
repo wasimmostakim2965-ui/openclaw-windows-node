@@ -15,7 +15,7 @@ Companion credential handoff, but not for baseline Gateway health/status. See
 [current native architecture](ARCHITECTURE.md#native-gateway-msix-lifecycle-and-shared-wizard-handoffs)
 and [onboarding](ONBOARDING_WIZARD.md#native-gateway-msix-isolated-or-legacy).
 Packaging findings below refer to
-[`openclaw-windows-packaging` at `3a0491c`](https://github.com/openclaw/openclaw-windows-packaging/tree/3a0491cf8790a3336d118486b66aeaa04dba7ba7).
+[`openclaw-windows-packaging` at `3a0491c`](https://github.com/wasimmostakim2965-ui/openclaw-windows-packaging/tree/3a0491cf8790a3336d118486b66aeaa04dba7ba7).
 The supplied `0.0.0.0` ARM64 proof package is older and must not be assumed to
 provide current source's bundled-Node preparation behavior. This assessment used
 source inspection and a read-only package-manifest inspection, not a live
@@ -40,11 +40,11 @@ isolated session.
 
 Packaging-owned surfaces to reuse:
 
-- [`Program.RunSetupAsync`](https://github.com/openclaw/openclaw-windows-packaging/blob/3a0491cf8790a3336d118486b66aeaa04dba7ba7/src/OpenClaw.Launcher/Program.cs):
+- [`Program.RunSetupAsync`](https://github.com/wasimmostakim2965-ui/openclaw-windows-packaging/blob/3a0491cf8790a3336d118486b66aeaa04dba7ba7/src/OpenClaw.Launcher/Program.cs):
   prepares the runtime and checks packaged application readiness.
-- [`ClawCtlCommandLine`](https://github.com/openclaw/openclaw-windows-packaging/blob/3a0491cf8790a3336d118486b66aeaa04dba7ba7/src/OpenClaw.Launcher/ClawCtlCommandLine.cs):
+- [`ClawCtlCommandLine`](https://github.com/wasimmostakim2965-ui/openclaw-windows-packaging/blob/3a0491cf8790a3336d118486b66aeaa04dba7ba7/src/OpenClaw.Launcher/ClawCtlCommandLine.cs):
   package readiness and launcher-version commands, not a second onboarding engine.
-- [`GatewayLauncher`](https://github.com/openclaw/openclaw-windows-packaging/blob/3a0491cf8790a3336d118486b66aeaa04dba7ba7/src/OpenClaw.Launcher/GatewayLauncher.cs):
+- [`GatewayLauncher`](https://github.com/wasimmostakim2965-ui/openclaw-windows-packaging/blob/3a0491cf8790a3336d118486b66aeaa04dba7ba7/src/OpenClaw.Launcher/GatewayLauncher.cs):
   ordinary process launch, upstream argument forwarding, external-supervisor
   environment and child lifetime.
 
@@ -121,7 +121,7 @@ proof that the Gateway is isolated or that arbitrary loopback is safe.
 #### Launcher ownership and shutdown comparison
 
 A follow-up on 2026-09-16 used the installed release
-[`v0.0.0.1`](https://github.com/openclaw/openclaw-windows-packaging/tree/3e5b1fff078e3ed46e9d2598835870a4e456717a),
+[`v0.0.0.1`](https://github.com/wasimmostakim2965-ui/openclaw-windows-packaging/tree/3e5b1fff078e3ed46e9d2598835870a4e456717a),
 fresh dedicated profiles and free loopback ports, without sending credentials or
 wizard answers. It exercised Companion's actual process host and queried both
 the job's process list and the listener's process identity:
@@ -487,7 +487,7 @@ The existing `NativeGatewayPackageResolver` resolves **current-user**
 registration and aliases under that user's LocalAppData. Those paths are not
 proof of registration or activation under a newly provisioned agent identity.
 The Gateway manifest declares both aliases against one `openclaw.exe`;
-[`HostEntrypointResolver`](https://github.com/openclaw/openclaw-windows-packaging/blob/3a0491cf8790a3336d118486b66aeaa04dba7ba7/src/OpenClaw.Launcher/HostEntrypoint.cs)
+[`HostEntrypointResolver`](https://github.com/wasimmostakim2965-ui/openclaw-windows-packaging/blob/3a0491cf8790a3336d118486b66aeaa04dba7ba7/src/OpenClaw.Launcher/HostEntrypoint.cs)
 selects `clawctl` from the invoked name. Running the physical `openclaw.exe`
 with `setup` is therefore not equivalent to invoking `clawctl setup`.
 
@@ -537,7 +537,7 @@ write-once attempt record before the call and the returned opaque ID saved in
 
 #### Artifact verification and preservation
 
-- Release: [`v0.0.0.1`](https://github.com/openclaw/openclaw-windows-packaging/releases/tag/v0.0.0.1),
+- Release: [`v0.0.0.1`](https://github.com/wasimmostakim2965-ui/openclaw-windows-packaging/releases/tag/v0.0.0.1),
   packaging commit `3e5b1fff078e3ed46e9d2598835870a4e456717a`.
 - Artifact: `OpenClawGateway-0.0.0.1-arm64.msix`.
 - SHA-256: `b5d7241a2a1b4870eb67dffadfedd04b71a29bfde92e6366827b3dd67444ae17`,

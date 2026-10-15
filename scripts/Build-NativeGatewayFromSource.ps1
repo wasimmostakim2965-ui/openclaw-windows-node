@@ -4,8 +4,8 @@
     register it side by side with any Microsoft Store Gateway.
 
 .DESCRIPTION
-    Builds OpenClaw from an openclaw/openclaw ref (default main), a local checkout, or a
-    prebuilt openclaw.tgz, then packages it with openclaw/openclaw-windows-packaging and
+    Builds OpenClaw from an wasimmostakim2965-ui/Open-Wai ref (default main), a local checkout, or a
+    prebuilt openclaw.tgz, then packages it with wasimmostakim2965-ui/openclaw-windows-packaging and
     registers it as a Developer Mode loose layout under the patched identity
     OpenClawFoundation.OpenClawGateway-<Patch> (commands openclaw-<Patch> and clawctl-<Patch>).
 
@@ -26,7 +26,7 @@
     packageManager. Node.js must be win32/<Architecture>.
 
 .PARAMETER OpenClawRef
-    Branch, tag, or full SHA of https://github.com/openclaw/openclaw.git. Default: main.
+    Branch, tag, or full SHA of https://github.com/wasimmostakim2965-ui/Open-Wai.git. Default: main.
 
 .PARAMETER OpenClawSourceDirectory
     Existing local openclaw checkout to build as-is. Uncommitted changes are allowed.
@@ -35,7 +35,7 @@
     Prebuilt directory containing openclaw.tgz and source.json. Skips the source build.
 
 .PARAMETER PackagingRef
-    Ref of https://github.com/openclaw/openclaw-windows-packaging.git. Default: main.
+    Ref of https://github.com/wasimmostakim2965-ui/openclaw-windows-packaging.git. Default: main.
 
 .PARAMETER PackagingDirectory
     Existing packaging checkout, used as-is (no fetch or checkout).
@@ -385,7 +385,7 @@ if (-not $reuse) {
 
         $nodeVersion = Get-NativeOutput 'node -p process.versions.node' { node -p 'process.versions.node' }
         [ordered]@{
-            repository = 'https://github.com/openclaw/openclaw'
+            repository = 'https://github.com/wasimmostakim2965-ui/Open-Wai'
             requestedRef = $requestedRef
             resolvedCommit = $commit
             packageVersion = $version

@@ -22,7 +22,7 @@ namespace OpenClaw.Shared.Tests;
 /// connect the <b>real</b> <see cref="OpenClawGatewayClient"/> over a <b>real</b>
 /// loopback WebSocket to a stub gateway, invoke each new typed method, and:
 ///   1. capture the exact JSON request frame the client serialized onto the wire
-///      (proving it matches the upstream openclaw/openclaw schema — param names,
+///      (proving it matches the upstream wasimmostakim2965-ui/Open-Wai schema — param names,
 ///      method names, and the tri-state sessions.patch null/value encoding), and
 ///   2. feed back schema-shaped responses and assert the typed DTOs parse.
 ///

@@ -1,6 +1,6 @@
 # Gateway Protocol Drift Guard
 
-> Source of truth: [`openclaw/openclaw` - `packages/gateway-protocol/src/schema/{sessions,commands}.ts`](https://github.com/openclaw/openclaw/tree/main/packages/gateway-protocol/src/schema)
+> Source of truth: [`wasimmostakim2965-ui/Open-Wai` - `packages/gateway-protocol/src/schema/{sessions,commands}.ts`](https://github.com/wasimmostakim2965-ui/Open-Wai/tree/main/packages/gateway-protocol/src/schema)
 
 This guard covers a protocol subset, not protocol negotiation or gateway release
 pinning. See the
@@ -25,7 +25,7 @@ The typed client implements the richer protocol surface -
 `GatewayProtocolModels.cs`. This guard pins that whole surface.
 
 It is intentionally **deterministic and repo-contained**: it requires neither a
-clone of the upstream `openclaw/openclaw` repo nor any network access, so it runs
+clone of the upstream `wasimmostakim2965-ui/Open-Wai` repo nor any network access, so it runs
 in the normal `OpenClaw.Shared.Tests` suite. It **complements** the behavioural
 parser tests in `GatewayProtocolModelsTests` (which parse sample JSON and assert
 DTO mapping) by statically guarding the method / request-field / response-envelope
@@ -219,7 +219,7 @@ Mitigations:
 
 - The snapshot records `upstreamVerified` (date + the exact `sessions.ts`/`commands.ts`
   blob SHAs the pin was checked against) so each verification is auditable and
-  reproducible. **Last verified 2026-06-23** against `openclaw/openclaw` main:
+  reproducible. **Last verified 2026-06-23** against `wasimmostakim2965-ui/Open-Wai` main:
   all enforced request fields / response envelopes / the `sessions.patch` tri-state
   nullable contract matched exactly; the snapshot is a deliberate subset (see the
   `upstreamVerified.result` note for the upstream-only `sessions.patch` fields the
@@ -227,7 +227,7 @@ Mitigations:
 - Treat a gateway-protocol bump in upstream as a trigger to re-verify and refresh,
   the same way `docs/gateway-node-integration.md` is refreshed.
 - Re-verify by fetching `packages/gateway-protocol/src/schema/{sessions,commands}.ts`
-  from `openclaw/openclaw` main, diffing against the pinned methods/fields, and
+  from `wasimmostakim2965-ui/Open-Wai` main, diffing against the pinned methods/fields, and
   updating `upstreamVerified` with the new blob SHAs.
 
 ## Scope

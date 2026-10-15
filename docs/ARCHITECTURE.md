@@ -62,7 +62,7 @@ setup instead of creating Workspace behind it. Explicit companion routes remain
 available for advanced connection setup.
 
 Workspace footer text follows the macOS-hosted Control UI at
-[`bda22f8`](https://github.com/openclaw/openclaw/blob/bda22f818d967ffa3551b3a729d5bc43863844c7/ui/src/components/app-sidebar-render.ts):
+[`bda22f8`](https://github.com/wasimmostakim2965-ui/Open-Wai/blob/bda22f818d967ffa3551b3a729d5bc43863844c7/ui/src/components/app-sidebar-render.ts):
 the current user's name, then email, then localized Owner; the second line is
 connection status. `WorkspaceIdentitySource` reads `users.self` profile fields
 (`displayName`, first `emails` entry), never an agent identity or Windows account.
@@ -295,7 +295,7 @@ Gateway onboarding.
 `NativeGatewayPackageIdentity` accepts the Store manifest's exact pair:
 `OpenClawFoundation.OpenClawGateway` and
 `CN=4BA40A7A-B719-4C40-BF91-84AF4F1136FC`
-([packaging manifest](https://github.com/openclaw/openclaw-windows-packaging/blob/96770f14d73edfcba41964c08cd2f64f39420278/src/OpenClaw.Launcher/Package.appxmanifest)).
+([packaging manifest](https://github.com/wasimmostakim2965-ui/openclaw-windows-packaging/blob/96770f14d73edfcba41964c08cd2f64f39420278/src/OpenClaw.Launcher/Package.appxmanifest)).
 The original `OpenClaw.Gateway` / OpenClaw Foundation development publisher pair
 remains accepted for already installed packages and saved profiles. Names and
 publishers cannot be mixed. New setup with both identities installed produces an
@@ -316,7 +316,7 @@ silently repaired. This protects loose-package code without changing Store resol
 
 Developers opt in to a source-built Gateway with
 `OPENCLAW_NATIVE_GATEWAY_DEV_PATCH=<patch>`. `scripts\Build-NativeGatewayFromSource.ps1`
-builds an `openclaw/openclaw` ref and registers it with the packaging repo's
+builds an `wasimmostakim2965-ui/Open-Wai` ref and registers it with the packaging repo's
 `Deploy-LocalPackage.ps1 -Patch` as the side-by-side loose registration
 `OpenClawFoundation.OpenClawGateway-<patch>` under the Store publisher, with
 package-qualified aliases `openclaw-<patch>.exe` and `clawctl-<patch>.exe`. While the

@@ -10,7 +10,7 @@ namespace OpenClaw.Shared.Tests;
 /// <summary>
 /// Unit tests for the gateway protocol DTOs and parsing. Exercises the internal static parse methods
 /// directly via crafted JsonElement payloads that mirror the canonical
-/// openclaw/openclaw gateway-protocol schemas, plus request payload shaping.
+/// wasimmostakim2965-ui/Open-Wai gateway-protocol schemas, plus request payload shaping.
 /// </summary>
 public class GatewayProtocolModelsTests
 {

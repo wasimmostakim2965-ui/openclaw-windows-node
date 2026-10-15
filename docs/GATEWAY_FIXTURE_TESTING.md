@@ -106,7 +106,7 @@ previously visible final message. A Release run captured this state while the
 Gateway returned the correct histories successfully. The cause is still under
 investigation, including potential automation timing effects.
 
-[Issue #1437](https://github.com/openclaw/openclaw-windows-node/issues/1437)
+[Issue #1437](https://github.com/wasimmostakim2965-ui/openclaw-windows-node/issues/1437)
 tracks the separate fix. Keep the assertion and failing artifacts; do not
 substitute an earlier passing run, introduce blind retries, or skip the case.
 The harness change deliberately does not change production scrolling to make

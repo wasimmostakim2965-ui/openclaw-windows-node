@@ -780,7 +780,7 @@ $reserveMsixJob = Get-JobBlock 'reserve-msix-version'
 foreach ($token in @(
     'needs: [change-classification, metadata]',
     "needs.metadata.result == 'success'",
-    "github.repository == 'openclaw/openclaw-windows-node'",
+    "github.repository == 'wasimmostakim2965-ui/openclaw-windows-node'",
     "startsWith(github.ref, 'refs/tags/v')",
     "(github.event_name == 'push' || github.event_name == 'workflow_dispatch')",
     'contents: write', 'persist-credentials: false',
@@ -795,7 +795,7 @@ Assert-NotContains -Text $metadataJob -Unexpected '-Reserve' -Message 'Preview m
 $previewStep = Get-StepBlock -Text $metadataJob -Name 'Resolve MSIX preview version'
 foreach ($token in @(
     '.\scripts\Get-OpenClawMsixPreviewSourceVersion.ps1',
-    '-Repository openclaw/openclaw-windows-node',
+    '-Repository wasimmostakim2965-ui/openclaw-windows-node',
     '-GitHubToken $env:GH_TOKEN',
     '"sourceVersion=$sourceVersion" >> $env:GITHUB_OUTPUT'
 )) {
@@ -821,14 +821,14 @@ function Convert-MsixGuard {
 }
 $reserveGuard = Convert-MsixGuard $reserveMsixJob
 $previewGuard = Convert-MsixGuard $previewStep
-if (-not (& $reserveGuard 'openclaw/openclaw-windows-node' 'refs/heads/main' 'workflow_dispatch' 'success' $false 'v2026.9.5-alpha.93') -or
-    (& $previewGuard 'openclaw/openclaw-windows-node' 'refs/heads/main' 'workflow_dispatch' 'success' $false 'v2026.9.5-alpha.93')) {
+if (-not (& $reserveGuard 'wasimmostakim2965-ui/openclaw-windows-node' 'refs/heads/main' 'workflow_dispatch' 'success' $false 'v2026.9.5-alpha.93') -or
+    (& $previewGuard 'wasimmostakim2965-ui/openclaw-windows-node' 'refs/heads/main' 'workflow_dispatch' 'success' $false 'v2026.9.5-alpha.93')) {
     throw 'Validated main-based promotion must reserve an official version, not use a preview.'
 }
-foreach ($repository in @('openclaw/openclaw-windows-node', 'contributor/openclaw-windows-node')) {
+foreach ($repository in @('wasimmostakim2965-ui/openclaw-windows-node', 'contributor/openclaw-windows-node')) {
     foreach ($ref in @('refs/tags/v2026.9.4', 'refs/tags/v2026.9.4-1', 'refs/tags/v2026.9.4-alpha.1', 'refs/heads/main', 'refs/pull/1/merge', 'refs/tags/msix-package/2026.9.4/401')) {
         foreach ($eventName in @('push', 'workflow_dispatch', 'pull_request', 'pull_request_target')) {
-            $official = $repository -eq 'openclaw/openclaw-windows-node' -and
+            $official = $repository -eq 'wasimmostakim2965-ui/openclaw-windows-node' -and
                 $ref.StartsWith('refs/tags/v') -and $eventName -in @('push', 'workflow_dispatch')
             if ((& $reserveGuard $repository $ref $eventName 'success' $false) -ne $official -or
                 (& $previewGuard $repository $ref $eventName 'success' $false) -ne (-not $official)) {

@@ -98,7 +98,7 @@ function New-VersionInfo {
         sourceVersion = $SourceVersion
         sourceCommit = $sourceCommit
         sourceRef = 'refs/pull/1/merge'
-        repository = 'openclaw/openclaw-windows-node'
+        repository = 'wasimmostakim2965-ui/openclaw-windows-node'
         baseVersion = $BaseVersion
         packageBaseVersion = "$($parts[0]).$($parts[1]).$Counter"
         storePackageVersion = "$($parts[0]).$($parts[1]).$Counter.0"

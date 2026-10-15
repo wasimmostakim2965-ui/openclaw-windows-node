@@ -10,7 +10,7 @@ namespace OpenClaw.Shared;
 // Gateway protocol client APIs.
 //
 // Typed client methods for the richer gateway protocol, matching the canonical
-// openclaw/openclaw schemas exactly:
+// wasimmostakim2965-ui/Open-Wai schemas exactly:
 //   • commands.list             — command catalog
 //   • sessions.create           — distinct session creation
 //   • sessions.patch            — extended per-session field set
