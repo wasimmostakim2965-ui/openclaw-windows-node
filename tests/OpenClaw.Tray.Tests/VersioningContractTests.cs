@@ -229,10 +229,10 @@ public sealed class VersioningContractTests
             "scripts",
             "Test-OpenClawStableCorrectionRelease.ps1"));
 
-        Assert.DoesNotContain("repos/wasimmostakim2965-ui/Open-Wai/", validator);
+        Assert.DoesNotContain("repos/openclaw/openclaw/", validator);
         Assert.DoesNotContain("releases/tags/$Tag", validator);
         Assert.Contains(
-            "repos/wasimmostakim2965-ui/openclaw-windows-node/releases/latest",
+            "repos/openclaw/openclaw-windows-node/releases/latest",
             validator);
         Assert.Contains("[string]$CurrentWindowsTag", validator);
     }
